@@ -1,9 +1,0 @@
-"neutral_spell_immunity_datadriven"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"MaxLevel"						"1"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-}
-
