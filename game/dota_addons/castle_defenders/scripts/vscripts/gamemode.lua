@@ -85,8 +85,8 @@ function GameMode:OnHeroInGame(hero)
   hero:SetGold(500, false)
 
   -- These lines will create an item and add it to the player, effectively ensuring they start with the item
-  local item = CreateItem("item_example_item", hero, hero)
-  hero:AddItem(item)
+  --local item = CreateItem("item_example_item", hero, hero)
+  --hero:AddItem(item)
 
   --[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
     --with the "example_ability" ability
@@ -95,23 +95,6 @@ function GameMode:OnHeroInGame(hero)
   hero:RemoveAbility(abil:GetAbilityName())
   hero:AddAbility("example_ability")]]
 end
-
---[[
-  This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this point,
-  gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
-  is useful for starting any game logic timers/thinkers, beginning the first round, etc.
-]]
-function GameMode:OnGameInProgress()
-  DebugPrint("[BAREBONES] The game has officially begun")
-
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
-    function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
-    end)
-end
-
-
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
@@ -124,23 +107,157 @@ function GameMode:InitGameMode()
   -- Check out internals/gamemode to see/modify the exact code
   GameMode:_InitGameMode()
 
-  -- Commands can be registered for debugging purposes or as functions that can be called by the custom Scaleform UI
-  Convars:RegisterCommand( "command_example", Dynamic_Wrap(GameMode, 'ExampleConsoleCommand'), "A console command example", FCVAR_CHEAT )
-
   DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end
 
--- This is an example console command
-function GameMode:ExampleConsoleCommand()
-  print( '******* Example Console Command ***************' )
-  local cmdPlayer = Convars:GetCommandClient()
-  if cmdPlayer then
-    local playerID = cmdPlayer:GetPlayerID()
-    if playerID ~= nil and playerID ~= -1 then
-      -- Do something here for the player who called this command
-      PlayerResource:ReplaceHeroWith(playerID, "npc_dota_hero_viper", 1000, 1000)
+--[[
+  This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this tSpawnPosition,
+  gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
+  is useful for starting any game logic timers/thinkers, beginning the first round, etc.
+]]
+function GameMode:OnGameInProgress()
+  print("[LEGION_TD] The game has officially begun")
+  
+  local iUpdateInterval = 1
+
+  UpdatePreGame()
+  Timers:CreateTimer(function()
+    Update()
+    return iUpdateInterval 
+  end)
+
+    --[[
+    Timers:CreateTimer(start_after, function()
+      CheckRoundEnd()
+      return check_interval
+    end)
+  ]]
+
+end
+
+--[[ 
+=============================================================================
+  OUR CODES STARTS FROM HERE
+=============================================================================
+
+iVariable = int
+tVariable = Tables
+bVariable = boolean
+vVariable = Vector
+
+]]
+
+-- Radiant hero count
+iRadiantHeroCount = 0
+-- Dire hero count
+iDireHeroCount = 0
+-- Spawn of wave is called
+bCalledSpawn = false
+-- Wave began
+bWaveStarted = false
+-- Wave ended
+bWaveEnded = true
+-- Game OFFICIALY Started
+bGameStarted = false
+-- Current Wave Number
+iWaveNumber = 1
+-- Number of enemies remaining
+tEnemiesRemaining = {}
+-- Spawn Positions
+tSpawnPosition ={}
+-- Pool position
+vPoolPos = 0
+-- table of summons
+tSummonedTower = {}
+-- Summoned Tower Position
+tSummonedTowerPos = {}
+-- Tower Summonings
+tHeroesSummoned = {}
+-- Creep Count
+iCreepCountPerSpawn = 0
+
+
+
+function UpdatePreGame()
+  -- Handle radiant spawn tSpawnPositions
+  iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+  iDireHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
+
+  print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
+
+  UpdateCreepCountToSpawn()
+
+  vPoolPos = Entities:FindByName(nil, "Pool_Pos"):GetAbsOrigin() 
+  --print('vPoolPos: ' .. vPoolPos) 
+end
+
+function Update()
+  if bCalledSpawn == false and bWaveStarted == false and bWaveEnded == true then
+    bCalledSpawn = true
+    FireGameEvent('cgm_timer_display', { timerMsg = "Wave will start in", timerSeconds = 30, timerWarning = -1, timerEnd = false, timerPosition = 0})
+    Timers:CreateTimer(30, function()
+      ConvertToHeros()
+      SpawnCreeps(iWaveNumber)
+      bWaveStarted = true
+    end)
+  elseif IsRoundOver() == true and bWaveStarted == true then
+    iWaveNumber = iWaveNumber + 1
+    bWaveStarted = false
+    bWaveEnded = true
+    bCalledSpawn = false 
+    RespawnBuildings()
+  end
+end
+
+function SpawnCreeps(waveNumber)
+  print('[SC] Spawn Them Creeps')
+    local units_to_spawn = 10;
+    local waypoint = Entities:FindByName(nil,"spawn11"):GetAbsOrigin()
+
+    for i = 1, units_to_spawn do
+      for _,v in pairs (tSpawnPosition) do
+        Timers:CreateTimer(function()
+          local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+          ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
+                      OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+                      Position = waypoint,Queue= true})
+          table.insert(tEnemiesRemaining, unit)
+        end)
+      end
     end
+end
+
+function IsRoundOver()
+  return (#tEnemiesRemaining <= 0)
+end
+
+function ConvertToHeros()
+  for _,v in pairs (tSummonedTower) do
+    -- TODO: Call first skill to change to unit
+    local unit = CreateUnitByName("npc_dota_hero_antimage", v:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS)
+    table.insert(tHeroesSummoned, unit)
+    v:SetAbsOrigin(vPoolPos)
+  end
+end
+
+function RespawnBuildings()
+  for k,v in pairs (tSummonedTowerPos) do
+    k:SetAbsOrigin(v)
   end
 
-  print( '*********************************************' )
+  for k,v in pairs (tHeroesSummoned) do
+    v:Destroy()
+    tHeroesSummoned[k] = nil
+  end
+
+  print('Heroes in table: ' .. #tHeroesSummoned)
+end
+
+function UpdateCreepCountToSpawn()
+  local totalPlayers = iRadiantHeroCount + iDireHeroCount
+  if totalPlayers > 4 then
+    iCreepCountPerSpawn = 30
+  else
+    iCreepCountPerSpawn = 20
+  end
 end
