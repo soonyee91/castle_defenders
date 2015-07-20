@@ -186,6 +186,15 @@ function UpdatePreGame()
   print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
 
   UpdateCreepCountToSpawn()
+  for i = 1, iRadiantHeroCount do
+    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
+  end
+
+  -- Handle dire spawn tSpawnPositions
+  for i = 5, iDireHeroCount + 4 do
+    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
+  end
+
 
   vPoolPos = Entities:FindByName(nil, "Pool_Pos"):GetAbsOrigin() 
   --print('vPoolPos: ' .. vPoolPos) 

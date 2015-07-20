@@ -32,6 +32,10 @@ function GameMode:OnNPCSpawned(keys)
   GameMode:_OnNPCSpawned(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
+  if npc:IsRealHero() and npc.bFirstSpawned == nil then
+    npc.bFirstSpawned = true
+    GameMode:OnHeroInGame(npc)
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive

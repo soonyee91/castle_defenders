@@ -18,6 +18,17 @@ function Precache( context )
 
   -- Particles can be precached individually or by folder
   -- It it likely that precaching a single particle system will precache all of its children, but this may not be guaranteed
+  PrecacheUnitByNameSync("creep_wave_1", context)
+  PrecacheUnitByNameSync("creep_wave_2", context)
+  PrecacheUnitByNameSync("creep_wave_3", context)
+  PrecacheUnitByNameSync("creep_wave_4", context)
+  PrecacheUnitByNameSync("creep_wave_5", context)
+  PrecacheUnitByNameSync("creep_wave_6", context)
+  PrecacheUnitByNameSync("creep_wave_7", context)
+  PrecacheUnitByNameSync("creep_wave_8", context)
+  PrecacheUnitByNameSync("creep_wave_9", context)
+  PrecacheUnitByNameSync("creep_wave_10", context)
+
   PrecacheResource("particle", "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf", context)
   PrecacheResource("particle_folder", "particles/test_particle", context)
 
