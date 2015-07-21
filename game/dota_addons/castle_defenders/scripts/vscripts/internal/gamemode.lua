@@ -21,37 +21,7 @@ function GameMode:_InitGameMode()
   GameRules:SetFirstBloodActive( ENABLE_FIRST_BLOOD )
   GameRules:SetHideKillMessageHeaders( HIDE_KILL_BANNERS )
 
-
-  -- This is multiteam configuration stuff
-  if USE_AUTOMATIC_PLAYERS_PER_TEAM then
-    local num = math.floor(10 / MAX_NUMBER_OF_TEAMS)
-    local count = 0
-    for team,number in pairs(TEAM_COLORS) do
-      if count >= MAX_NUMBER_OF_TEAMS then
-        GameRules:SetCustomGameTeamMaxPlayers(team, 0)
-      else
-        GameRules:SetCustomGameTeamMaxPlayers(team, num)
-      end
-      count = count + 1
-    end
-  else
-    local count = 0
-    for team,number in pairs(CUSTOM_TEAM_PLAYER_COUNT) do
-      if count >= MAX_NUMBER_OF_TEAMS then
-        GameRules:SetCustomGameTeamMaxPlayers(team, 0)
-      else
-        GameRules:SetCustomGameTeamMaxPlayers(team, number)
-      end
-      count = count + 1
-    end
-  end
-
-  if USE_CUSTOM_TEAM_COLORS then
-    for team,color in pairs(TEAM_COLORS) do
-      SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
-    end
-  end
-  DebugPrint('[BAREBONES] GameRules set')
+  print ('[BAREBONES] GameRules set')
 
   --InitLogFile( "log/barebones.txt","")
 
@@ -105,20 +75,19 @@ function GameMode:_InitGameMode()
       GameMode:StartEventTest()
     end, "events test", 0)]]
 
+--[[
   local spew = 0
   if BAREBONES_DEBUG_SPEW then
     spew = 1
   end
   Convars:RegisterConvar('barebones_spew', tostring(spew), 'Set to 1 to start spewing barebones debug info.  Set to 0 to disable.', 0)
-
+]]
   -- Change random seed
   local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
   math.randomseed(tonumber(timeTxt))
 
   -- Initialized tables for tracking state
   self.bSeenWaitForPlayers = false
-
-  DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end
 
 mode = nil

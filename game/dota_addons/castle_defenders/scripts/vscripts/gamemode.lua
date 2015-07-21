@@ -6,12 +6,13 @@
 BAREBONES_DEBUG_SPEW = false 
 
 if GameMode == nil then
-    DebugPrint( '[BAREBONES] creating barebones game mode' )
+    print ( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
 end
 
 -- This library allow for easily delayed/timed actions
 require('libraries/timers')
+--[[
 -- This library can be used for advancted physics/motion/collision of units.  See PhysicsReadme.txt for more information.
 require('libraries/physics')
 -- This library can be used for advanced 3D projectile systems.
@@ -20,7 +21,7 @@ require('libraries/projectiles')
 require('libraries/notifications')
 -- This library can be used for starting customized animations on units from lua
 require('libraries/animations')
-
+]]
 -- These internal libraries set up barebones's events and processes.  Feel free to inspect them/change them if you need to.
 require('internal/gamemode')
 require('internal/events')
@@ -47,7 +48,7 @@ require('events')
   This function should generally only be used if the Precache() function in addon_game_mode.lua is not working.
 ]]
 function GameMode:PostLoadPrecache()
-  DebugPrint("[BAREBONES] Performing Post-Load precache")    
+  print ("[BAREBONES] Performing Post-Load precache")    
   --PrecacheItemByNameAsync("item_example_item", function(...) end)
   --PrecacheItemByNameAsync("example_ability", function(...) end)
 
@@ -60,7 +61,7 @@ end
   It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
 ]]
 function GameMode:OnFirstPlayerLoaded()
-  DebugPrint("[BAREBONES] First Player has loaded")
+  print ("[BAREBONES] First Player has loaded")
 end
 
 --[[
@@ -68,7 +69,7 @@ end
   It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
 ]]
 function GameMode:OnAllPlayersLoaded()
-  DebugPrint("[BAREBONES] All Players have loaded into the game")
+  print ("[BAREBONES] All Players have loaded into the game")
 end
 
 --[[
@@ -79,7 +80,7 @@ end
   The hero parameter is the hero entity that just spawned in
 ]]
 function GameMode:OnHeroInGame(hero)
-  DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+  print ("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   hero:SetGold(500, false)
@@ -100,14 +101,14 @@ end
 -- It can be used to pre-initialize any values/tables that will be needed later
 function GameMode:InitGameMode()
   GameMode = self
-  DebugPrint('[BAREBONES] Starting to load Barebones gamemode...')
+  print ('[BAREBONES] Starting to load Barebones gamemode...')
 
   -- Call the internal function to set up the rules/behaviors specified in constants.lua
   -- This also sets up event hooks for all event handlers in events.lua
   -- Check out internals/gamemode to see/modify the exact code
   GameMode:_InitGameMode()
 
-  DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
+  print ('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end
 
 --[[
@@ -116,7 +117,7 @@ end
   is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 ]]
 function GameMode:OnGameInProgress()
-  print("[LEGION_TD] The game has officially begun")
+  print("[Castle_Defender] The game has officially begun")
   
   local iUpdateInterval = 1
 
@@ -167,16 +168,23 @@ tEnemiesRemaining = {}
 tSpawnPosition ={}
 -- Pool position
 vPoolPos = 0
--- table of summons
-tSummonedTower = {}
+-- Table for creep to hero value
+tCreepSpawnValue = {
+  [1] = 10,
+  [2] = 15,
+  [3] = 20,
+  [4] = 20,
+  [5] = 25,
+  [6] = 30,
+  [7] = 30,
+  [8] = 40
+}
 -- Summoned Tower Position
 tSummonedTowerPos = {}
 -- Tower Summonings
 tHeroesSummoned = {}
 -- Creep Count
 iCreepCountPerSpawn = 0
-
-
 
 function UpdatePreGame()
   -- Handle radiant spawn tSpawnPositions
@@ -186,18 +194,6 @@ function UpdatePreGame()
   print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
 
   UpdateCreepCountToSpawn()
-  for i = 1, iRadiantHeroCount do
-    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
-  end
-
-  -- Handle dire spawn tSpawnPositions
-  for i = 5, iDireHeroCount + 4 do
-    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
-  end
-
-
-  vPoolPos = Entities:FindByName(nil, "Pool_Pos"):GetAbsOrigin() 
-  --print('vPoolPos: ' .. vPoolPos) 
 end
 
 function Update()
@@ -264,9 +260,5 @@ end
 
 function UpdateCreepCountToSpawn()
   local totalPlayers = iRadiantHeroCount + iDireHeroCount
-  if totalPlayers > 4 then
-    iCreepCountPerSpawn = 30
-  else
-    iCreepCountPerSpawn = 20
-  end
+  iCreepCountPerSpawn = tCreepSpawnValue[totalPlayers]
 end
