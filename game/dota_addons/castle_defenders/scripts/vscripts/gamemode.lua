@@ -162,12 +162,10 @@ bWaveEnded = true
 bGameStarted = false
 -- Current Wave Number
 iWaveNumber = 1
--- Number of enemies remaining
-tEnemiesRemaining = {}
 -- Spawn Positions
 tSpawnPosition ={}
 -- Pool position
-vPoolPos = 0
+vBossSpawnPos = 0
 -- Table for creep to hero value
 tCreepSpawnValue = {
   [1] = 10,
@@ -179,24 +177,41 @@ tCreepSpawnValue = {
   [7] = 30,
   [8] = 40
 }
--- Summoned Tower Position
-tSummonedTowerPos = {}
--- Tower Summonings
-tHeroesSummoned = {}
 -- Creep Count
 iCreepCountPerSpawn = 0
+-- Boss Number
+iBossCounter = 1
 
 function UpdatePreGame()
-  -- Handle radiant spawn tSpawnPositions
   iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
   iDireHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
 
   print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
 
+  for i = 1, 3 do
+    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
+  end
+
+  vBossSpawnPos = Entities:FindByName(nil, "boss_spawn"):GetAbsOrigin()
+
   UpdateCreepCountToSpawn()
+
+  Timers:CreateTimer(function()
+      SpawnCreeps(iWaveNumber)
+      return 30.0
+    end
+  )
+--[[
+  Timers:CreateTimer(function()
+    SpawnBoss(iBossCounter)
+    return 180.0
+    end
+  )
+]]
 end
 
 function Update()
+  --[[
   if bCalledSpawn == false and bWaveStarted == false and bWaveEnded == true then
     bCalledSpawn = true
     FireGameEvent('cgm_timer_display', { timerMsg = "Wave will start in", timerSeconds = 30, timerWarning = -1, timerEnd = false, timerPosition = 0})
@@ -212,50 +227,34 @@ function Update()
     bCalledSpawn = false 
     RespawnBuildings()
   end
+  ]]
 end
 
 function SpawnCreeps(waveNumber)
   print('[SC] Spawn Them Creeps')
-    local units_to_spawn = 10;
-    local waypoint = Entities:FindByName(nil,"spawn11"):GetAbsOrigin()
+  local waypoint = Entities:FindByName(nil,"heroBase"):GetAbsOrigin()
 
-    for i = 1, units_to_spawn do
-      for _,v in pairs (tSpawnPosition) do
-        Timers:CreateTimer(function()
-          local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
-          ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
-                      OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-                      Position = waypoint,Queue= true})
-          table.insert(tEnemiesRemaining, unit)
-        end)
-      end
+  for i = 1, iCreepCountPerSpawn do
+    for _,v in pairs (tSpawnPosition) do
+      Timers:CreateTimer(function()
+        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
+                    OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+                    Position = waypoint,Queue= true})
+      end)
     end
-end
-
-function IsRoundOver()
-  return (#tEnemiesRemaining <= 0)
-end
-
-function ConvertToHeros()
-  for _,v in pairs (tSummonedTower) do
-    -- TODO: Call first skill to change to unit
-    local unit = CreateUnitByName("npc_dota_hero_antimage", v:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS)
-    table.insert(tHeroesSummoned, unit)
-    v:SetAbsOrigin(vPoolPos)
-  end
-end
-
-function RespawnBuildings()
-  for k,v in pairs (tSummonedTowerPos) do
-    k:SetAbsOrigin(v)
   end
 
-  for k,v in pairs (tHeroesSummoned) do
-    v:Destroy()
-    tHeroesSummoned[k] = nil
-  end
+  --iWaveNumber = iWaveNumber + 1
+end
 
-  print('Heroes in table: ' .. #tHeroesSummoned)
+function SpawnBoss(bossNumber)
+  print('[SC] SpawnBoss')
+  local unit = CreateUnitByName("boss_wave_" .. bossNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
+                    OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+                    Position = waypoint,Queue= true})
+  iBossCounter = iBossCounter + 1
 end
 
 function UpdateCreepCountToSpawn()
