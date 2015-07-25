@@ -145,6 +145,7 @@ iVariable = int
 tVariable = Tables
 bVariable = boolean
 vVariable = Vector
+fVariable = float
 
 ]]
 
@@ -152,14 +153,6 @@ vVariable = Vector
 iRadiantHeroCount = 0
 -- Dire hero count
 iDireHeroCount = 0
--- Spawn of wave is called
-bCalledSpawn = false
--- Wave began
-bWaveStarted = false
--- Wave ended
-bWaveEnded = true
--- Game OFFICIALY Started
-bGameStarted = false
 -- Current Wave Number
 iWaveNumber = 1
 -- Spawn Positions
@@ -181,6 +174,16 @@ tCreepSpawnValue = {
 iCreepCountPerSpawn = 0
 -- Boss Number
 iBossCounter = 1
+-- Creep Spawn Time
+fCreepSpawnTime = 0
+-- Boss Spawn Time
+fBossSpawnTime = 0
+-- Current Game Time
+fGameTime = 0
+-- Creep Spawn Interval
+fCreepSpawnInterval = 30
+-- Boss Spawn Interval
+fBossSpawnInterval = 180
 
 function UpdatePreGame()
   iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
@@ -196,11 +199,11 @@ function UpdatePreGame()
 
   UpdateCreepCountToSpawn()
 
-  Timers:CreateTimer(function()
-      SpawnCreeps(iWaveNumber)
-      return 30.0
-    end
-  )
+  fGameTime = GameRules:GetGameTime()
+  fCreepSpawnTime = fGameTime + fCreepSpawnInterval
+  fBossSpawnTime = fGameTime + fBossSpawnInterval
+  FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
+
 --[[
   Timers:CreateTimer(function()
     SpawnBoss(iBossCounter)
@@ -211,6 +214,19 @@ function UpdatePreGame()
 end
 
 function Update()
+  fGameTime = GameRules:GetGameTime() 
+
+  if fCreepSpawnTime < fGameTime then
+    fCreepSpawnTime = fGameTime + fCreepSpawnInterval
+    SpawnCreeps(iWaveNumber)
+  end
+
+  if fBossSpawnTime < fGameTime then
+    fBossSpawnTime = fGameTime + fBossSpawnInterval
+    FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
+    SpawnBoss(iBossCounter)
+  end
+
   --[[
   if bCalledSpawn == false and bWaveStarted == false and bWaveEnded == true then
     bCalledSpawn = true
