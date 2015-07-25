@@ -28,6 +28,7 @@ function Precache( context )
   PrecacheUnitByNameSync("creep_wave_8", context)
   PrecacheUnitByNameSync("creep_wave_9", context)
   PrecacheUnitByNameSync("creep_wave_10", context)
+  PrecacheUnitByNameSync("boss_wave_1", context)
 
 end
 

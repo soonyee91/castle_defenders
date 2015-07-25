@@ -146,7 +146,7 @@ tVariable = Tables
 bVariable = boolean
 vVariable = Vector
 fVariable = float
-
+eVariable = entity
 ]]
 
 -- Radiant hero count
@@ -184,6 +184,14 @@ fGameTime = 0
 fCreepSpawnInterval = 30
 -- Boss Spawn Interval
 fBossSpawnInterval = 180
+-- Ally Base
+eAllyBase = nil
+-- Enemy Base
+eEnemyBase = nil
+-- How many times creep is spawned already
+fDifficultyTimer = 0
+-- Difficulty Interval
+fDifficultyInterval = 180
 
 function UpdatePreGame()
   iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
@@ -199,9 +207,15 @@ function UpdatePreGame()
 
   UpdateCreepCountToSpawn()
 
+  -- Cache both bases
+  eAllyBase = Entities:FindByName(nil, "ally_base")
+  eEnemyBase = Entities:FindByName(nil, "enemy_base")
+
   fGameTime = GameRules:GetGameTime()
   fCreepSpawnTime = fGameTime + fCreepSpawnInterval
   fBossSpawnTime = fGameTime + fBossSpawnInterval
+  fDifficultyTimer = fGameTime + fDifficultyInterval
+
   FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
 
 --[[
@@ -227,6 +241,14 @@ function Update()
     SpawnBoss(iBossCounter)
   end
 
+  if fDifficultyTimer < fGameTime then
+    fDifficultyTimer = fGameTime + fDifficultyInterval
+    iWaveNumber = iWaveNumber + 1
+  end
+
+  if CheckGameEnd() then
+    DeclareWinner()
+  end
   --[[
   if bCalledSpawn == false and bWaveStarted == false and bWaveEnded == true then
     bCalledSpawn = true
@@ -248,25 +270,26 @@ end
 
 function SpawnCreeps(waveNumber)
   print('[SC] Spawn Them Creeps')
-  local waypoint = Entities:FindByName(nil,"heroBase"):GetAbsOrigin()
+  local waypoint = eAllyBase:GetAbsOrigin()
 
   for i = 1, iCreepCountPerSpawn do
     for _,v in pairs (tSpawnPosition) do
       Timers:CreateTimer(function()
-        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
         ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
                     OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
                     Position = waypoint,Queue= true})
       end)
     end
   end
-
   --iWaveNumber = iWaveNumber + 1
 end
 
 function SpawnBoss(bossNumber)
   print('[SC] SpawnBoss')
-  local unit = CreateUnitByName("boss_wave_" .. bossNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+  local waypoint = eAllyBase:GetAbsOrigin()
+
+  local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_BADGUYS)
         ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
                     OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
                     Position = waypoint,Queue= true})
@@ -276,4 +299,19 @@ end
 function UpdateCreepCountToSpawn()
   local totalPlayers = iRadiantHeroCount + iDireHeroCount
   iCreepCountPerSpawn = tCreepSpawnValue[totalPlayers]
+end
+
+function CheckGameEnd()
+  if not eAllyBase:IsAlive() or not eEnemyBase:IsAlive() then
+    return true
+  end
+  return false
+end
+
+function DeclareWinner()
+  if not eAllyBase:IsAlive() then
+    GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+  elseif not eEnemyBase:IsAlive() then
+    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+  end
 end
