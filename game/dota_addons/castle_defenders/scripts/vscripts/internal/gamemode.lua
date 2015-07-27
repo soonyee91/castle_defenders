@@ -2,6 +2,7 @@
 -- It can be used to pre-initialize any values/tables that will be needed later
 function GameMode:_InitGameMode()
   -- Setup rules
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,8)
   GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
   GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
   GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
