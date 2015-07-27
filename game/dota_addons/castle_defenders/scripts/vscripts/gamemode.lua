@@ -275,7 +275,7 @@ function SpawnCreeps(waveNumber)
   for i = 1, iCreepCountPerSpawn do
     for _,v in pairs (tSpawnPosition) do
       Timers:CreateTimer(function()
-        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
+        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
         ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
                     OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
                     Position = waypoint,Queue= true})
