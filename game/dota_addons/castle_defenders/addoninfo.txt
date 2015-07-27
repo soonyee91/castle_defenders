@@ -1,18 +1,10 @@
 "AddonInfo"
 {
-  "TeamCount" "10"
+  "TeamCount" "1"
   "maps"      "castle_defenders_map"
-  "IsPlayable"  "1"
+  
   "castle_defenders_map"
   {
-          "MaxPlayers"                    "8"
+          "MaxPlayers"                    "10"
   }
-//  "desert_duo"
-//  {
-//          "MaxPlayers"                    "10"
-//  }
-//  "forest_solo"
-//  {
-//          "MaxPlayers"                    "10"
-//  }
-}
+
