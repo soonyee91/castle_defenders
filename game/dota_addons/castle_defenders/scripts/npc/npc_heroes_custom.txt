@@ -1,26 +1,15 @@
 "DOTAHeroes"
 {
-  "castleDefense_anti_mage"
+  "Hollow_One"
   {
     "AbilityLayout"     "5"
     "override_hero"     "npc_dota_hero_antimage"
     "SoundSet"          "0" 
     "Ability1"        "antimage_blink" 
-    "Ability2"        "antimage_mana_break" 
+    "Ability2"        "HollowOne_ConjureImage" 
     "Ability3"        "abaddon_death_coil" 
-    "Ability4"        "barebones_empty4"
+    "Ability4"        "HollowOne_Transform"
     "Ability5"        "attribute_bonus"
-    "Ability6"        ""
-    "Ability7"        ""
-    "Ability8"        ""
-    "Ability9"        ""
-    "Ability10"       ""
-    "Ability11"       ""
-    "Ability12"       ""
-    "Ability13"       ""
-    "Ability14"       ""
-    "Ability15"       ""
-    "Ability16"       ""
 
     "ArmorPhysical"       "0"                 // Physical protection.
     "MagicalResistance"       "0"                 // Magical protection (percentage).

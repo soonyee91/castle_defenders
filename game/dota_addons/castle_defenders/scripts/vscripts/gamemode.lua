@@ -249,23 +249,6 @@ function Update()
   if CheckGameEnd() then
     DeclareWinner()
   end
-  --[[
-  if bCalledSpawn == false and bWaveStarted == false and bWaveEnded == true then
-    bCalledSpawn = true
-    FireGameEvent('cgm_timer_display', { timerMsg = "Wave will start in", timerSeconds = 30, timerWarning = -1, timerEnd = false, timerPosition = 0})
-    Timers:CreateTimer(30, function()
-      ConvertToHeros()
-      SpawnCreeps(iWaveNumber)
-      bWaveStarted = true
-    end)
-  elseif IsRoundOver() == true and bWaveStarted == true then
-    iWaveNumber = iWaveNumber + 1
-    bWaveStarted = false
-    bWaveEnded = true
-    bCalledSpawn = false 
-    RespawnBuildings()
-  end
-  ]]
 end
 
 function SpawnCreeps(waveNumber)
@@ -289,7 +272,7 @@ function SpawnBoss(bossNumber)
   print('[SC] SpawnBoss')
   local waypoint = eAllyBase:GetAbsOrigin()
 
-  local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_BADGUYS)
+  local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_NEUTRALS)
         ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
                     OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
                     Position = waypoint,Queue= true})
