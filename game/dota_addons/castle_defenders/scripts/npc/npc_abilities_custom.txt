@@ -295,7 +295,7 @@
 		"RequiredLevel"						"6"
 		"LevelsBetweenUpgrades"				"7"
 
-		"HotKeyOverrid" 					"M"
+		"HotKeyOverrid" 					"T"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -453,6 +453,12 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"			"terrorblade_conjure_image"
+
+		"MaxLevel"							"4"
+		"RequiredLevel"						"-1"
+		"LevelsBetweenUpgrades"				"2"
+
+		"HotKeyOverrid" 					"C"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -516,7 +522,5 @@
 			}
 		}
 	}
-
-
 }
 
