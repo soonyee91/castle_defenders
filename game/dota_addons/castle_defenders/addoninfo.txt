@@ -5,6 +5,6 @@
   
   "castle_defenders_map"
   {
-          "MaxPlayers"                    "10"
+          "MaxPlayers"                    "8"
   }
 

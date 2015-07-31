@@ -1,134 +1,277 @@
 "DOTAAbilities"
 {
-  //Shield
-  "item_example_item"
-  {
-    "ID"              "1836"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
-    "BaseClass"           "item_datadriven"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "AbilityTextureName"      "item_example_item"
+	// Blades of Illusion
+	"item_blades_of_illusion"
+	{
+		"ID"										"1600"
+		"BaseClass"             					"item_datadriven"
+		"PingOverrideText"							"DOTA_Chat_blades_of_illusion"
 
-    // Stats
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastRange"        "900"
-    "AbilityCastPoint"        "0.2"
-    "AbilityCooldown"       "13.0"
+		// General Stuffs
+		"ItemCost" 									"1000"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+	}
 
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "100"
-    "ItemCost"            "750"
-    "ItemInitialCharges"      "0"
-    "ItemDroppable"         "1"
-    "ItemSellable"          "1"
-    "ItemRequiresCharges"     "0"
-    "ItemShareability"        "ITEM_NOT_SHAREABLE"
-    "ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-    
-    "MaxUpgradeLevel"       "1"
-    "ItemBaseLevel"         "1"
-    
-    "precache"
-    {
-      "particle"              "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
-      "particle_folder"       "particles/test_particle"
-      "soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
-    }
-    "OnSpellStart"
-    {
-      "LinearProjectile"
-      {
-        "EffectName"      "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
-        "MoveSpeed"       "%speed"
-        //"StartPosition"   "attach_attack1"
-        "FixedDistance"   "%distance"
-        "StartRadius"     "%radius"
-        "EndRadius"       "%radius"
-        "TargetTeams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "TargetTypes"     "DOTA_UNIT_TARGET_HERO"
-        "TargetFlags"     "DOTA_UNIT_TARGET_FLAG_NONE"
-        "HasFrontalCone"    "0"
-        "ProvidesVision"    "0"
-        "VisionRadius"      "0"
-      }
-      "FireSound"
-      {
-        "EffectName"    "Hero_Abaddon.AphoticShield.Cast"
-        "Target"        "CASTER"
-      }
-      "ApplyModifier"
-      {
-        "Target"      "CASTER"
-        "ModifierName"  "modifier_item_shield"
-      }
-    }
-    
-    "OnProjectileHitUnit"
-    {     
-      "DeleteOnHit" "0"
-      "Damage"
-      {
-        "Target"      "TARGET"
-        "Type"    "DAMAGE_TYPE_PURE"
-        "Damage"  "%damage"
-      }
-    }
-    
-    "Modifiers"
-    {
-      "modifier_item_shield"
-      {
-        "EffectName"    "particles/test_particle/damage_immunity.vpcf"
-        "EffectAttachType"  "follow_origin"
-        "Target"      "CASTER"
-        
-        "Duration" "%duration"
-        "TextureName" "abaddon_aphotic_shield"
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%damage_reduction"
-        }
-      }
-    }
-    
-    // Special  
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "duration"        "4.0"
-      }
-      
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "damage_reduction"    "-50"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "radius"          "150"
-      }
-      "04"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "speed"           "1800"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "distance"        "900"
-      }
-      "06"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "damage"          "125"
-      }
-    }
-  }
+	"item_recipe_blades_of_illusion"
+	{
+		"ID"										"1601"
+		"BaseClass"             					"item_datadriven"
+
+		// General Stuffs
+		"ItemCost" 									"1000"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+
+		// Recipe
+		"ItemRecipe"								"1"
+		"ItemResult"								"item_blades_of_illusion"
+		
+		"ItemRequirements"
+		{
+			// Cant have spaces between ; and next item
+			"01" "item_manta;item_yasha;item_yasha"
+		}
+	}
+
+	// Blades of Illusion
+	"item_cape_of_fire"
+	{
+		"ID"										"1610"
+		"BaseClass"             					"item_datadriven"
+
+		// General Stuffs
+		"ItemCost" 									"0"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}
+
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"dps"				"100"
+			}
+
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"lifesteal"			"20"
+			}
+		}
+
+		"Modifiers"
+		{
+			"item_custom_modifier"
+			{
+				"Passive"			"1"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}
+
+				"OnOrbImpact"
+				{
+					"Lifesteal"
+					{
+						"Target"            "ATTACKER"
+						"LifestealPercent"	"%lifesteal"
+					}
+				}
+			}
+
+			"modifier_burn"
+			{
+				"Passive"			"1"
+
+				"ThinkInterval"  "1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%dps"
+					}
+				}
+			}
+		}
+	}
+
+	"item_recipe_cape_of_fire"
+	{
+		"ID"										"1611"
+		"BaseClass"             					"item_datadriven"
+
+		// General Stuffs
+		"ItemCost" 									"0"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+
+		// Recipe
+		"ItemRecipe"								"1"
+		"ItemResult"								"item_cape_of_fire"
+		"ItemRequirements"
+		{
+			// Cant have spaces between ; and next item
+			"01" "item_vladmir;item_radiance"
+		}
+
+	}
+
+	//Shield
+	"item_example_item"
+	{
+		"ID"              "1836"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+		"BaseClass"           "item_datadriven"
+		"AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+		"AbilityTextureName"      "item_example_item"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"        "900"
+		"AbilityCastPoint"        "0.2"
+		"AbilityCooldown"       "13.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"       "100"
+		"ItemCost"            "750"
+		"ItemInitialCharges"      "0"
+		"ItemDroppable"         "1"
+		"ItemSellable"          "1"
+		"ItemRequiresCharges"     "0"
+		"ItemShareability"        "ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		
+		"MaxUpgradeLevel"       "1"
+		"ItemBaseLevel"         "1"
+		
+		"precache"
+		{
+			"particle"              "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+			"particle_folder"       "particles/test_particle"
+			"soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"EffectName"      "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+				"MoveSpeed"       "%speed"
+				//"StartPosition"   "attach_attack1"
+				"FixedDistance"   "%distance"
+				"StartRadius"     "%radius"
+				"EndRadius"       "%radius"
+				"TargetTeams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"     "DOTA_UNIT_TARGET_HERO"
+				"TargetFlags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"    "0"
+				"ProvidesVision"    "0"
+				"VisionRadius"      "0"
+			}
+			"FireSound"
+			{
+				"EffectName"    "Hero_Abaddon.AphoticShield.Cast"
+				"Target"        "CASTER"
+			}
+			"ApplyModifier"
+			{
+				"Target"      "CASTER"
+				"ModifierName"  "modifier_item_shield"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{     
+			"DeleteOnHit" "0"
+			"Damage"
+			{
+				"Target"      "TARGET"
+				"Type"    "DAMAGE_TYPE_PURE"
+				"Damage"  "%damage"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_shield"
+			{
+				"EffectName"    "particles/test_particle/damage_immunity.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"      "CASTER"
+				
+				"Duration" "%duration"
+				"TextureName" "abaddon_aphotic_shield"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%damage_reduction"
+				}
+			}
+		}
+		
+		// Special  
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"duration"        "4.0"
+			}
+			
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"damage_reduction"    "-50"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"radius"          "150"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"speed"           "1800"
+			}
+			"05"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"distance"        "900"
+			}
+			"06"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"damage"          "125"
+			}
+		}
+	}
 }

@@ -6,8 +6,8 @@
 BAREBONES_DEBUG_SPEW = false 
 
 if GameMode == nil then
-    print ( '[BAREBONES] creating barebones game mode' )
-    _G.GameMode = class({})
+		print ( '[BAREBONES] creating barebones game mode' )
+		_G.GameMode = class({})
 end
 
 -- This library allow for easily delayed/timed actions
@@ -33,112 +33,112 @@ require('events')
 
 
 --[[
-  This function should be used to set up Async precache calls at the beginning of the gameplay.
+	This function should be used to set up Async precache calls at the beginning of the gameplay.
 
-  In this function, place all of your PrecacheItemByNameAsync and PrecacheUnitByNameAsync.  These calls will be made
-  after all players have loaded in, but before they have selected their heroes. PrecacheItemByNameAsync can also
-  be used to precache dynamically-added datadriven abilities instead of items.  PrecacheUnitByNameAsync will 
-  precache the precache{} block statement of the unit and all precache{} block statements for every Ability# 
-  defined on the unit.
+	In this function, place all of your PrecacheItemByNameAsync and PrecacheUnitByNameAsync.  These calls will be made
+	after all players have loaded in, but before they have selected their heroes. PrecacheItemByNameAsync can also
+	be used to precache dynamically-added datadriven abilities instead of items.  PrecacheUnitByNameAsync will 
+	precache the precache{} block statement of the unit and all precache{} block statements for every Ability# 
+	defined on the unit.
 
-  This function should only be called once.  If you want to/need to precache more items/abilities/units at a later
-  time, you can call the functions individually (for example if you want to precache units in a new wave of
-  holdout).
+	This function should only be called once.  If you want to/need to precache more items/abilities/units at a later
+	time, you can call the functions individually (for example if you want to precache units in a new wave of
+	holdout).
 
-  This function should generally only be used if the Precache() function in addon_game_mode.lua is not working.
+	This function should generally only be used if the Precache() function in addon_game_mode.lua is not working.
 ]]
 function GameMode:PostLoadPrecache()
-  print ("[BAREBONES] Performing Post-Load precache")    
-  --PrecacheItemByNameAsync("item_example_item", function(...) end)
-  --PrecacheItemByNameAsync("example_ability", function(...) end)
+	print ("[BAREBONES] Performing Post-Load precache")    
+	--PrecacheItemByNameAsync("item_example_item", function(...) end)
+	--PrecacheItemByNameAsync("example_ability", function(...) end)
 
-  --PrecacheUnitByNameAsync("npc_dota_hero_viper", function(...) end)
-  --PrecacheUnitByNameAsync("npc_dota_hero_enigma", function(...) end)
+	--PrecacheUnitByNameAsync("npc_dota_hero_viper", function(...) end)
+	--PrecacheUnitByNameAsync("npc_dota_hero_enigma", function(...) end)
 end
 
 --[[
-  This function is called once and only once as soon as the first player (almost certain to be the server in local lobbies) loads in.
-  It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
+	This function is called once and only once as soon as the first player (almost certain to be the server in local lobbies) loads in.
+	It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
 ]]
 function GameMode:OnFirstPlayerLoaded()
-  print ("[BAREBONES] First Player has loaded")
+	print ("[BAREBONES] First Player has loaded")
 end
 
 --[[
-  This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
-  It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
+	This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
+	It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
 ]]
 function GameMode:OnAllPlayersLoaded()
-  print ("[BAREBONES] All Players have loaded into the game")
+	print ("[BAREBONES] All Players have loaded into the game")
 end
 
 --[[
-  This function is called once and only once for every player when they spawn into the game for the first time.  It is also called
-  if the player's hero is replaced with a new hero for any reason.  This function is useful for initializing heroes, such as adding
-  levels, changing the starting gold, removing/adding abilities, adding physics, etc.
+	This function is called once and only once for every player when they spawn into the game for the first time.  It is also called
+	if the player's hero is replaced with a new hero for any reason.  This function is useful for initializing heroes, such as adding
+	levels, changing the starting gold, removing/adding abilities, adding physics, etc.
 
-  The hero parameter is the hero entity that just spawned in
+	The hero parameter is the hero entity that just spawned in
 ]]
 function GameMode:OnHeroInGame(hero)
-  print ("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+	print ("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
-  -- This line for example will set the starting gold of every hero to 500 unreliable gold
-  hero:SetGold(500, false)
+	-- This line for example will set the starting gold of every hero to 500 unreliable gold
+	hero:SetGold(500, false)
 
-  -- These lines will create an item and add it to the player, effectively ensuring they start with the item
-  --local item = CreateItem("item_example_item", hero, hero)
-  --hero:AddItem(item)
+	-- These lines will create an item and add it to the player, effectively ensuring they start with the item
+	--local item = CreateItem("item_example_item", hero, hero)
+	--hero:AddItem(item)
 
-  --[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
-    --with the "example_ability" ability
+	--[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
+		--with the "example_ability" ability
 
-  local abil = hero:GetAbilityByIndex(1)
-  hero:RemoveAbility(abil:GetAbilityName())
-  hero:AddAbility("example_ability")]]
+	local abil = hero:GetAbilityByIndex(1)
+	hero:RemoveAbility(abil:GetAbilityName())
+	hero:AddAbility("example_ability")]]
 end
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function GameMode:InitGameMode()
-  GameMode = self
-  print ('[BAREBONES] Starting to load Barebones gamemode...')
+	GameMode = self
+	print ('[BAREBONES] Starting to load Barebones gamemode...')
 
-  -- Call the internal function to set up the rules/behaviors specified in constants.lua
-  -- This also sets up event hooks for all event handlers in events.lua
-  -- Check out internals/gamemode to see/modify the exact code
-  GameMode:_InitGameMode()
+	-- Call the internal function to set up the rules/behaviors specified in constants.lua
+	-- This also sets up event hooks for all event handlers in events.lua
+	-- Check out internals/gamemode to see/modify the exact code
+	GameMode:_InitGameMode()
 
-  print ('[BAREBONES] Done loading Barebones gamemode!\n\n')
+	print ('[BAREBONES] Done loading Barebones gamemode!\n\n')
 end
 
 --[[
-  This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this tSpawnPosition,
-  gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
-  is useful for starting any game logic timers/thinkers, beginning the first round, etc.
+	This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this tSpawnPosition,
+	gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
+	is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 ]]
 function GameMode:OnGameInProgress()
-  print("[Castle_Defender] The game has officially begun")
-  
-  local iUpdateInterval = 1
+	print("[Castle_Defender] The game has officially begun")
+	
+	local iUpdateInterval = 1
 
-  UpdatePreGame()
-  Timers:CreateTimer(function()
-    Update()
-    return iUpdateInterval 
-  end)
+	UpdatePreGame()
+	Timers:CreateTimer(function()
+		Update()
+		return iUpdateInterval 
+	end)
 
-    --[[
-    Timers:CreateTimer(start_after, function()
-      CheckRoundEnd()
-      return check_interval
-    end)
-  ]]
+		--[[
+		Timers:CreateTimer(start_after, function()
+			CheckRoundEnd()
+			return check_interval
+		end)
+	]]
 
 end
 
 --[[ 
 =============================================================================
-  OUR CODES STARTS FROM HERE
+	OUR CODES STARTS FROM HERE
 =============================================================================
 
 iVariable = int
@@ -161,14 +161,14 @@ tSpawnPosition ={}
 vBossSpawnPos = 0
 -- Table for creep to hero value
 tCreepSpawnValue = {
-  [1] = 10,
-  [2] = 15,
-  [3] = 20,
-  [4] = 20,
-  [5] = 25,
-  [6] = 30,
-  [7] = 30,
-  [8] = 40
+	[1] = 8,
+	[2] = 8,
+	[3] = 8,
+	[4] = 12,
+	[5] = 12,
+	[6] = 15,
+	[7] = 23,
+	[8] = 23
 }
 -- Creep Count
 iCreepCountPerSpawn = 0
@@ -194,107 +194,107 @@ fDifficultyTimer = 0
 fDifficultyInterval = 180
 
 function UpdatePreGame()
-  iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-  iDireHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
+	iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+	iDireHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
 
-  print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
+	print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
 
-  for i = 1, 3 do
-    tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
-  end
+	for i = 1, 3 do
+		tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
+	end
 
-  vBossSpawnPos = Entities:FindByName(nil, "boss_spawn"):GetAbsOrigin()
+	vBossSpawnPos = Entities:FindByName(nil, "boss_spawn"):GetAbsOrigin()
 
-  UpdateCreepCountToSpawn()
+	UpdateCreepCountToSpawn()
 
-  -- Cache both bases
-  eAllyBase = Entities:FindByName(nil, "ally_base")
-  eEnemyBase = Entities:FindByName(nil, "enemy_base")
+	-- Cache both bases
+	eAllyBase = Entities:FindByName(nil, "ally_base")
+	eEnemyBase = Entities:FindByName(nil, "enemy_base")
 
-  fGameTime = GameRules:GetGameTime()
-  fCreepSpawnTime = fGameTime + fCreepSpawnInterval
-  fBossSpawnTime = fGameTime + fBossSpawnInterval
-  fDifficultyTimer = fGameTime + fDifficultyInterval
+	fGameTime = GameRules:GetGameTime()
+	fCreepSpawnTime = fGameTime + fCreepSpawnInterval
+	fBossSpawnTime = fGameTime + fBossSpawnInterval
+	fDifficultyTimer = fGameTime + fDifficultyInterval
 
-  FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
+	FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
 
 --[[
-  Timers:CreateTimer(function()
-    SpawnBoss(iBossCounter)
-    return 180.0
-    end
-  )
+	Timers:CreateTimer(function()
+		SpawnBoss(iBossCounter)
+		return 180.0
+		end
+	)
 ]]
 end
 
 function Update()
-  fGameTime = GameRules:GetGameTime() 
+	fGameTime = GameRules:GetGameTime() 
 
-  if fCreepSpawnTime < fGameTime then
-    fCreepSpawnTime = fGameTime + fCreepSpawnInterval
-    SpawnCreeps(iWaveNumber)
-  end
+	if fCreepSpawnTime < fGameTime then
+		fCreepSpawnTime = fGameTime + fCreepSpawnInterval
+		SpawnCreeps(iWaveNumber)
+	end
 
-  if fBossSpawnTime < fGameTime then
-    fBossSpawnTime = fGameTime + fBossSpawnInterval
-    FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
-    SpawnBoss(iBossCounter)
-  end
+	if fBossSpawnTime < fGameTime then
+		fBossSpawnTime = fGameTime + fBossSpawnInterval
+		FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
+		SpawnBoss(iBossCounter)
+	end
 
-  if fDifficultyTimer < fGameTime then
-    fDifficultyTimer = fGameTime + fDifficultyInterval
-    iWaveNumber = iWaveNumber + 1
-  end
+	if fDifficultyTimer < fGameTime then
+		fDifficultyTimer = fGameTime + fDifficultyInterval
+		iWaveNumber = iWaveNumber + 1
+	end
 
-  if CheckGameEnd() then
-    DeclareWinner()
-  end
+	if CheckGameEnd() then
+		DeclareWinner()
+	end
 end
 
 function SpawnCreeps(waveNumber)
-  print('[SC] Spawn Them Creeps')
-  local waypoint = eAllyBase:GetAbsOrigin()
+	print('[SC] Spawn Them Creeps')
+	local waypoint = eAllyBase:GetAbsOrigin()
 
-  for i = 1, iCreepCountPerSpawn do
-    for _,v in pairs (tSpawnPosition) do
-      Timers:CreateTimer(function()
-        local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
-        ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
-                    OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-                    Position = waypoint,Queue= true})
-      end)
-    end
-  end
-  --iWaveNumber = iWaveNumber + 1
+	for i = 1, iCreepCountPerSpawn do
+		for _,v in pairs (tSpawnPosition) do
+			Timers:CreateTimer(function()
+				local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
+										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+										Position = waypoint,Queue= true})
+			end)
+		end
+	end
+	--iWaveNumber = iWaveNumber + 1
 end
 
 function SpawnBoss(bossNumber)
-  print('[SC] SpawnBoss')
-  local waypoint = eAllyBase:GetAbsOrigin()
+	print('[SC] SpawnBoss')
+	local waypoint = eAllyBase:GetAbsOrigin()
 
-  local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_NEUTRALS)
-        ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
-                    OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-                    Position = waypoint,Queue= true})
-  iBossCounter = iBossCounter + 1
+	local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_NEUTRALS)
+				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
+										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+										Position = waypoint,Queue= true})
+	iBossCounter = iBossCounter + 1
 end
 
 function UpdateCreepCountToSpawn()
-  local totalPlayers = iRadiantHeroCount + iDireHeroCount
-  iCreepCountPerSpawn = tCreepSpawnValue[totalPlayers]
+	local totalPlayers = iRadiantHeroCount + iDireHeroCount
+	iCreepCountPerSpawn = tCreepSpawnValue[totalPlayers]
 end
 
 function CheckGameEnd()
-  if not eAllyBase:IsAlive() or not eEnemyBase:IsAlive() then
-    return true
-  end
-  return false
+	if not eAllyBase:IsAlive() or not eEnemyBase:IsAlive() then
+		return true
+	end
+	return false
 end
 
 function DeclareWinner()
-  if not eAllyBase:IsAlive() then
-    GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
-  elseif not eEnemyBase:IsAlive() then
-    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-  end
+	if not eAllyBase:IsAlive() then
+		GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+	elseif not eEnemyBase:IsAlive() then
+		GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	end
 end
