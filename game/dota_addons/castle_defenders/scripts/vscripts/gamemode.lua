@@ -83,7 +83,7 @@ function GameMode:OnHeroInGame(hero)
 	print ("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
 	-- This line for example will set the starting gold of every hero to 500 unreliable gold
-	hero:SetGold(500, false)
+	hero:SetGold(9999999, false)
 
 	-- These lines will create an item and add it to the player, effectively ensuring they start with the item
 	--local item = CreateItem("item_example_item", hero, hero)
@@ -244,6 +244,12 @@ function Update()
 	if fDifficultyTimer < fGameTime then
 		fDifficultyTimer = fGameTime + fDifficultyInterval
 		iWaveNumber = iWaveNumber + 1
+		-- Prevent over number of creep wave
+		-- Addes 5 mroe creeps to each lane to spawn
+		if iWaveNumber > 10 then
+			iWaveNumber = 10
+			iCreepCountPerSpawn = iCreepCountPerSpawn + 5
+		end
 	end
 
 	if CheckGameEnd() then
@@ -258,7 +264,7 @@ function SpawnCreeps(waveNumber)
 	for i = 1, iCreepCountPerSpawn do
 		for _,v in pairs (tSpawnPosition) do
 			Timers:CreateTimer(function()
-				local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_NEUTRALS)
+				local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
 				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
 										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
 										Position = waypoint,Queue= true})
@@ -272,7 +278,7 @@ function SpawnBoss(bossNumber)
 	print('[SC] SpawnBoss')
 	local waypoint = eAllyBase:GetAbsOrigin()
 
-	local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_NEUTRALS)
+	local unit = CreateUnitByName("boss_wave_" .. bossNumber, vBossSpawnPos, true, nil, nil, DOTA_TEAM_BADGUYS)
 				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
 										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
 										Position = waypoint,Queue= true})
