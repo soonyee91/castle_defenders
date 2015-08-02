@@ -903,6 +903,7 @@
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "0"
 		"UnitLabel"                 "healing_ward"
+		"ModelScale"          	    "2.0"
 		
 		// Abilities
 		//----------------------------------------------------------------
@@ -983,6 +984,35 @@
 		// Bots
 		//----------------------------------------------------------------
 		"AttackDesire"              "1.5"       // How much bots want to attack them vs other non-hero things
+		
+		"Creature"
+		{
+		//AttachWearables
+		//----------------------------------------------------------------
+		"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"306"
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"307"
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"476"
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"478"
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"540"
+				}
+			}
+		}
 	}
 
 	// =====================================================================================
