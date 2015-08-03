@@ -87,7 +87,7 @@
 	{
 		// General
 		//
-		"BaseClass"                 "npc_dota_creature" // Class of entity of link to.
+		"BaseClass"                 "npc_dota_creature" 				// Class of entity of link to.
 		"Model"                     "models/heroes/slark/slark.vmdl"    // Model.
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "0"
