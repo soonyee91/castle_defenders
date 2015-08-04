@@ -1,45 +1,87 @@
 "DOTAHeroes"
 {
-  "Hollow_One"
-  {
-    "AbilityLayout"     "5"
-    "override_hero"     "npc_dota_hero_antimage"
-    "SoundSet"          "0" 
-    "Ability1"        "antimage_blink" 
-    "Ability2"        "HollowOne_ConjureImage" 
-    "Ability3"        "abaddon_death_coil" 
-    "Ability4"        "HollowOne_Transform"
-    "Ability5"        "attribute_bonus"
+	"Hollow_One"
+	{
+		"AbilityLayout"     "4"
+		"override_hero"     "npc_dota_hero_antimage"
+		"SoundSet"          "0" 
+		"Ability1"        "antimage_blink" 
+		"Ability2"        "HollowOne_ConjureImage" 
+		"Ability3"        "abaddon_death_coil" 
+		"Ability4"        "HollowOne_Transform"
+		"Ability5"        "attribute_bonus_castle"
 
-    "ArmorPhysical"       "0"                 // Physical protection.
-    "MagicalResistance"       "0"                 // Magical protection (percentage).
+		"ArmorPhysical"       "0"                 // Physical protection.
+		"MagicalResistance"       "0"                 // Magical protection (percentage).
 
-    // Attack
-    //-------------------------------------------------------------------------------------------------------------
-    "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"           "200"                                    // Damage range min.
-    "AttackDamageMax"           "400"                                    // Damage range max.    
-    "AttackRate"                "1.45"                                  // Speed of attack.
-    "AttackAnimationPoint"      "0.3"                                   // Normalized time in animation cycle to attack.
-    "AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
-    "AttackRange"               "128"                                   // Range within a target can be attacked.
-    "ProjectileModel"           ""                                      // Particle system model for projectile.
-    "ProjectileSpeed"           "0"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"           "200"                                    // Damage range min.
+		"AttackDamageMax"           "400"                                    // Damage range max.    
+		"AttackRate"                "1.45"                                  // Speed of attack.
+		"AttackAnimationPoint"      "0.3"                                   // Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"    "600"                                   // Range within a target can be acquired.
+		"AttackRange"               "128"                                   // Range within a target can be attacked.
+		"ProjectileModel"           ""                                      // Particle system model for projectile.
+		"ProjectileSpeed"           "0"
 
-    //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
-    "AttributeBaseStrength"   "20"                   // Base strength
-    "AttributeStrengthGain"   "10"                   // Strength bonus per level.
-    "AttributeBaseIntelligence" "20"                   // Base intelligence
-    "AttributeIntelligenceGain" "10"                   // Intelligence bonus per level.
-    "AttributeBaseAgility"    "20"                   // Base agility
-    "AttributeAgilityGain"    "10"                   // Agility bonus per level.
+		//"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"   "20"                   // Base strength
+		"AttributeStrengthGain"   "10"                   // Strength bonus per level.
+		"AttributeBaseIntelligence" "20"                   // Base intelligence
+		"AttributeIntelligenceGain" "10"                   // Intelligence bonus per level.
+		"AttributeBaseAgility"    "20"                   // Base agility
+		"AttributeAgilityGain"    "10"                   // Agility bonus per level.
 
-    "StatusHealth"        "1000"                 // Base health.
-    "StatusHealthRegen"     "0.0"                 // Health regeneration rate.
-    "StatusMana"        "400"                   // Base mana.
-    "StatusManaRegen"     "100.0"                 // Mana regeneration rate.
+		"StatusHealth"        "1000"                 // Base health.
+		"StatusHealthRegen"     "0.0"                 // Health regeneration rate.
+		"StatusMana"        "400"                   // Base mana.
+		"StatusManaRegen"     "100.0"                 // Mana regeneration rate.
 
-    "VisionDaytimeRange"    "1800"                  // Range of vision at night time.
-    "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
-  }
+		"VisionDaytimeRange"    "1800"                  // Range of vision at night time.
+		"VisionNighttimeRange"    "1800"                  // Range of vision at night time.
+	}
+
+	//=============================
+	// Dazzle Overide
+	//=============================
+	"Shadow_Priest"
+	{
+		"override_hero"					"npc_dota_hero_dazzle"
+		"Ability1"						"venomancer_venomous_gale"
+		"Ability4"						"voodoo_restoration_custom"
+		"Ability5"						"attribute_bonus_castle"
+	}
+
+	//=============================
+	// Templar Overide
+	//=============================
+	"Masked_One"
+	{
+		"AbilityLayout"					"5"
+		"override_hero"					"npc_dota_hero_templar_assassin"
+		"Ability1"						"templar_assassin_refraction_holdout"
+		"Ability6"						"attribute_bonus_castle"
+	}
+
+	//============================
+	// Sniper Overide
+	//============================
+	"Short_Sights"
+	{
+		"AbilityLayout"					"4"
+		"override_hero"					"npc_dota_hero_sniper"
+		"Ability5"						"attribute_bonus_castle"
+	}
+
+	//=============================
+	// Jakiro Overide
+	//=============================
+	"Chimera"
+	{
+		"AbilityLayout"					"4"
+		"override_hero"					"npc_dota_hero_jakiro"
+		"Ability5"						"attribute_bonus_castle"
+	}
 }

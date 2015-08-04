@@ -21,6 +21,10 @@
 
   "attributes"
   {
+    "item"    "item_tome_of_str"
+    "item"    "item_tome_of_agi"
+    "item"    "item_tome_of_int"
+
     "item"    "item_branches"
 
     "item"    "item_gauntlets"

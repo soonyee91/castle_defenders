@@ -43,11 +43,51 @@
 			{
 				"var_type"							"FIELD_FLOAT"
 				"illusion_incoming_damage_total_tooltip"			"425.0"
-			}			
+			}
+			"06"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_attackspeed"					"20"
+			}
+			"07"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_str"							"10"
+			}
+			"08"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_agi"							"50"
+			}
+			"09"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_int"							"10"
+			}
+			"10"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_movespeed"					"15"
+			}
 		}
 
 		"Modifiers"
 		{
+			"boi_item_stats"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+			    {
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attackspeed"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%bonus_movespeed"
+			    }
+			}
+
 			"boi_illusion_modifier"
 			{
 				"Passive"			"1"
@@ -145,14 +185,51 @@
 				"var_type"			"FIELD_FLOAT"
 				"lifesteal"			"20"
 			}
+
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage_bonus"		"75"
+			}
+
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"armor_bonus"		"5"
+			}
+
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"hpregen_bonus"		"3"
+			}
+
+		}
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_radiance_streak_glow.vpcf"
 		}
 
 		"Modifiers"
 		{
+			"cof_item_stats"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+			    {
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%damage_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%hpregen_bonus"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+			    }
+			}
+
 			"cof_lifesteal_modifier"
 			{
 				"Passive"			"1"
-				"IsHidden"			"0"
+				"IsHidden"			"1"
 				"IsDebuff"			"0"
 
 				"Orb"
@@ -173,6 +250,22 @@
 			"cof_burn_modifier"
 			{
 				"Passive"			"1"
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+
+				"AttachEffect"
+				{
+					"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_radiance_streak_glow.vpcf"
+					"EffectAttachType"  "follow_origin"
+					
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
 
 				"ThinkInterval"  "1.0"
 				"OnIntervalThink"
@@ -213,7 +306,7 @@
 		"ItemRequirements"
 		{
 			// Cant have spaces between ; and next item
-			"01" "item_vladmir;item_radiance"
+			"01" "item_helm_of_the_dominator;item_radiance"
 		}
 	}
 
@@ -238,7 +331,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"chance"			"100"
+				"chance"			"10"
 			}
 
 			"02"
@@ -246,10 +339,39 @@
 				"var_type"			"FIELD_INTEGER"
 				"damage"			"500"
 			}
+
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"40"
+			}
+
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attackspeed"	"120"
+			}
+		}
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
 		}
 
 		"Modifiers"
 		{
+			"hot_item_stats"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+			    {
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%bonus_attackspeed"
+			    }
+			}
+
 			"hot_lightning_random"
 			{
 			    "Passive"   "1"
@@ -289,10 +411,9 @@
 			            "Target"    		"CASTER"    
 			        }
 
-			        // Basic lightning particle effect
-			        "LightningEffect"
+			        "FireEffect"
 			        {
-			        	"EffectName" "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+			        	"EffectName" 			"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
 			            "EffectAttachType"  	"follow_origin"
 			            "Target"    			"TARGET"
 			        }

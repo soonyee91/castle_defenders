@@ -8,7 +8,7 @@
 	{
 		"ID"              "1852"
 		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"BaseClass"           "ability_datadriven"
+		"BaseClass"           	"ability_datadriven"
 		"AbilityTextureName"      "holdout_blade_fury"
 
 		// Stats
@@ -521,6 +521,179 @@
 				"Function"			"ConjureImage"
 			}
 		}
+	}
+
+	//=================================================================================================
+	// Templar Assassin: Refraction Holdout
+	//=================================================================================================
+	"templar_assassin_refraction_holdout"
+	{
+		// General
+		//-----------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+
+		// Casting
+		//--------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+		// Time		
+		//--------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"17.0 17.0 17.0 17.0"
+
+		// Cost
+		//--------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_absorb"				"200 300 400 500"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_damage"				"20 40 60 80"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"17.0 17.0 17.0 17.0"
+			}
+		}
+	}
+
+	//===================================================================================================
+	// Custom voodoo restoration
+	//===================================================================================================
+	"voodoo_restoration_custom"
+	{
+		// General
+		//----------------------------------------------------------------------------------------------------
+		"BaseClass"           		"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityTextureName"      	"witch_doctor_voodoo_restoration"
+		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		"MaxLevel"					"4"
+		"RequiredLevel"				"-1"
+		"LevelsBetweenUpgrades"		"7"
+
+		// Time		
+		//----------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0 0.0 0.0 0.0"
+
+		// Cost
+		//----------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"4 8 12 15"
+
+		// Special
+		//----------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"mana_per_interval"			"4 8 12 15"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"500"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"heal"						"40 50 60 470"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"heal_interval"				"0.33 0.33 0.33 0.33"
+			}
+		}
+
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"heal_modifier"
+				"Target" 		"CASTER"
+			}
+		}
+
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"heal_modifier"
+				"Target" 		"CASTER"				
+			}
+		}
+
+		"precache"
+		{
+			"particle"  "particles/items_fx/healing_flask_b.vpcf"
+		}
+
+		"Modifiers"
+		{
+			"heal_modifier"
+			{
+				"IsHidden"			"0"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/items_fx/healing_flask_b.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "CASTER"
+					}
+				}
+				
+				"ThinkInterval"  "%heal_interval"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"HealAmount"	"%heal"
+					}
+					"SpendMana"
+					{
+						"Mana"		"%mana_per_interval"
+					}
+				}
+			}
+		}
+	}
+
+	//=====================================================================
+	// Attribute Bonus
+	//=====================================================================
+
+	"attribute_bonus_castle"
+	{
+		// General
+		//-----------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"attribute_bonus"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"MaxLevel"						"100"
+		"RequiredLevel"					"0"
+		"LevelsBetweenUpgrades"			"1"
 	}
 }
 

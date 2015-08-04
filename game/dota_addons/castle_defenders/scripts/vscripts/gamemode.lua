@@ -151,8 +151,6 @@ eVariable = entity
 
 -- Radiant hero count
 iRadiantHeroCount = 0
--- Dire hero count
-iDireHeroCount = 0
 -- Current Wave Number
 iWaveNumber = 1
 -- Spawn Positions
@@ -195,9 +193,6 @@ fDifficultyInterval = 180
 
 function UpdatePreGame()
 	iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-	iDireHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-
-	print('[sc] Radiant Players: ' .. iRadiantHeroCount .. ' Dire Players: ' .. iDireHeroCount)
 
 	for i = 1, 3 do
 		tSpawnPosition[i] = Entities:FindByName(nil, "spawn" .. i):GetAbsOrigin()
@@ -209,6 +204,7 @@ function UpdatePreGame()
 
 	-- Cache both bases
 	eAllyBase = Entities:FindByName(nil, "ally_base")
+	eAllyBase:SetTeam(DOTA_TEAM_GOODGUYS)
 	eEnemyBase = Entities:FindByName(nil, "enemy_base")
 
 	fGameTime = GameRules:GetGameTime()
@@ -261,17 +257,26 @@ function SpawnCreeps(waveNumber)
 	print('[SC] Spawn Them Creeps')
 	local waypoint = eAllyBase:GetAbsOrigin()
 
-	for i = 1, iCreepCountPerSpawn do
-		for _,v in pairs (tSpawnPosition) do
-			Timers:CreateTimer(function()
-				local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
-				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
-										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-										Position = waypoint,Queue= true})
-			end)
+	local leftPath = Entities:FindByName( nil, "left_lane_path_1")
+	local midPath = Entities:FindByName( nil, "mid_lane_path_1")
+	local rightPath = Entities:FindByName( nil, "right_lane_path_1")
+
+	local counter = 0
+
+	for _, v in pairs (tSpawnPosition) do
+		for i = 1, iCreepCountPerSpawn do
+			local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
+
+			if counter == 0 then
+				unit:SetInitialGoalEntity(leftPath)
+			elseif counter == 1 then
+				unit:SetInitialGoalEntity(midPath)
+			elseif counter == 2 then
+				unit:SetInitialGoalEntity(rightPath)
+			end
 		end
+		counter = counter + 1
 	end
-	--iWaveNumber = iWaveNumber + 1
 end
 
 function SpawnBoss(bossNumber)
@@ -286,8 +291,7 @@ function SpawnBoss(bossNumber)
 end
 
 function UpdateCreepCountToSpawn()
-	local totalPlayers = iRadiantHeroCount + iDireHeroCount
-	iCreepCountPerSpawn = tCreepSpawnValue[totalPlayers]
+	iCreepCountPerSpawn = tCreepSpawnValue[iRadiantHeroCount]
 end
 
 function CheckGameEnd()
