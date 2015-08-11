@@ -159,14 +159,14 @@ tSpawnPosition ={}
 vBossSpawnPos = 0
 -- Table for creep to hero value
 tCreepSpawnValue = {
-	[1] = 8,
-	[2] = 8,
-	[3] = 8,
-	[4] = 12,
-	[5] = 12,
-	[6] = 15,
-	[7] = 23,
-	[8] = 23
+	[1] = 3,
+	[2] = 4,
+	[3] = 5,
+	[4] = 5,
+	[5] = 6,
+	[6] = 8,
+	[7] = 8,
+	[8] = 9
 }
 -- Creep Count
 iCreepCountPerSpawn = 0
@@ -179,7 +179,7 @@ fBossSpawnTime = 0
 -- Current Game Time
 fGameTime = 0
 -- Creep Spawn Interval
-fCreepSpawnInterval = 30
+fCreepSpawnInterval = 10
 -- Boss Spawn Interval
 fBossSpawnInterval = 180
 -- Ally Base
