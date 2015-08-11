@@ -576,7 +576,7 @@
 		//----------------------------------------------------------------------------------------------------
 		"BaseClass"           		"ability_datadriven"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityTextureName"      	"witch_doctor_voodoo_restoration"
+		"AbilityTextureName"      	"voodoo_restoration"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
 
 		"MaxLevel"					"4"
