@@ -157,19 +157,32 @@ iWaveNumber = 1
 tSpawnPosition ={}
 -- Pool position
 vBossSpawnPos = 0
--- Table for creep to hero value
-tCreepSpawnValue = {
-	[1] = 3,
-	[2] = 4,
-	[3] = 5,
-	[4] = 5,
-	[5] = 6,
-	[6] = 8,
-	[7] = 8,
-	[8] = 9
+-- Table for Easy creep : hero
+tEasyCreepSpawnValue = {
+	[1] = 5,
+	[2] = 5,
+	[3] = 6,
+	[4] = 7,
+	[5] = 7,
+	[6] = 9,
+	[7] = 9,
+	[8] = 10
+}
+-- Table for Medium creep : hero
+tMediumCreepSpawnValue = {
+	[1] = 1,
+	[2] = 1,
+	[3] = 1,
+	[4] = 2,
+	[5] = 3,
+	[6] = 4,
+	[7] = 4,
+	[8] = 4
 }
 -- Creep Count
-iCreepCountPerSpawn = 0
+iEasyCreepCountPerSpawn = 0
+-- Medium Creep Count
+iMediumCreepCountPerSpawn = 0
 -- Boss Number
 iBossCounter = 1
 -- Creep Spawn Time
@@ -244,7 +257,8 @@ function Update()
 		-- Addes 5 mroe creeps to each lane to spawn
 		if iWaveNumber > 10 then
 			iWaveNumber = 10
-			iCreepCountPerSpawn = iCreepCountPerSpawn + 5
+			iEasyCreepCountPerSpawn = iEasyCreepCountPerSpawn + 5
+			iMediumCreepCountPerSpawn = iMediumCreepCountPerSpawn + 2
 		end
 	end
 
@@ -264,8 +278,8 @@ function SpawnCreeps(waveNumber)
 	local counter = 0
 
 	for _, v in pairs (tSpawnPosition) do
-		for i = 1, iCreepCountPerSpawn do
-			local unit = CreateUnitByName("creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
+		for i = 1, iEasyCreepCountPerSpawn do
+			local unit = CreateUnitByName("easy_creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
 
 			if counter == 0 then
 				unit:SetInitialGoalEntity(leftPath)
@@ -275,6 +289,20 @@ function SpawnCreeps(waveNumber)
 				unit:SetInitialGoalEntity(rightPath)
 			end
 		end
+
+		for j = 1, iMediumCreepCountPerSpawn do
+			local mediumUnit = CreateUnitByName("medium_creep_wave_" .. waveNumber, v, true, nil, nil, DOTA_TEAM_BADGUYS)
+
+			if counter == 0 then
+				mediumUnit:SetInitialGoalEntity(leftPath)
+			elseif counter == 1 then
+				mediumUnit:SetInitialGoalEntity(midPath)
+			elseif counter == 2 then
+				mediumUnit:SetInitialGoalEntity(rightPath)
+			end
+		end
+
+		-- To increase which lane the unit heads to
 		counter = counter + 1
 	end
 end
@@ -291,7 +319,8 @@ function SpawnBoss(bossNumber)
 end
 
 function UpdateCreepCountToSpawn()
-	iCreepCountPerSpawn = tCreepSpawnValue[iRadiantHeroCount]
+	iEasyCreepCountPerSpawn = tEasyCreepSpawnValue[iRadiantHeroCount]
+	iMediumCreepCountPerSpawn = tMediumCreepSpawnValue[iRadiantHeroCount]
 end
 
 function CheckGameEnd()
