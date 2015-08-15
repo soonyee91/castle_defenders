@@ -617,6 +617,11 @@
 			}
 		}
 
+		"precache"
+		{
+			"particle"  "particles/status_fx/status_effect_keeper_spirit_form.vpcf"
+		}
+
 		"OnToggleOn"
 		{
 			"ApplyModifier"
@@ -635,11 +640,6 @@
 			}
 		}
 
-		"precache"
-		{
-			"particle"  "particles/items_fx/healing_flask_b.vpcf"
-		}
-
 		"Modifiers"
 		{
 			"heal_modifier"
@@ -647,12 +647,8 @@
 				"IsHidden"			"0"
 				"OnCreated"
 				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/items_fx/healing_flask_b.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "CASTER"
-					}
+					"StatusEffectName"	"particles/status_fx/status_effect_keeper_spirit_form.vpcf"
+					"StatusEffectPriority"	"10"
 				}
 				
 				"ThinkInterval"  "%heal_interval"

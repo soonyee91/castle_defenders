@@ -1028,12 +1028,15 @@
 // ================================================================================================
   
 	// note: npc_dota_creature will autolearn abilities to creatureLevel*2.
-	"medium_creep_wave_1" // Crab - Use smeevil_crab model
+	//====================================================================
+	// TIDE HUNTER
+	//====================================================================
+	"medium_creep_wave_1" 
 	{
 		// General
 		//
 		"BaseClass"                 "npc_dota_creature" // Class of entity of link to.
-		"Model"                     "models/courier/smeevil_crab/smeevil_crab.vmdl" // Model.
+		"Model"                     "models/heroes/tidehunter/tidehunter.vmdl" // Model.
 		"SoundSet"                  "n_creep_Melee"                  // Name of sound set.
 		"Level"                     "1"
 		"UnitLabel"                 "healing_ward"
@@ -1112,17 +1115,19 @@
 		//----------------------------------------------------------------------------------------------------------------------
 		"Creature"
 		{
-			
 			"DisableClumpingBehavior"	"1"
 		}
 	}
 
-	"medium_creep_wave_2" //using slark model
+	//====================================================================
+	// Naga Siren
+	//====================================================================
+	"medium_creep_wave_2"
 	{
 		// General
 		//
 		"BaseClass"                 "npc_dota_creature" 				// Class of entity of link to.
-		"Model"                     "models/heroes/slark/slark.vmdl"    // Model.
+		"Model"                     "models/heroes/siren/siren.vmdl"    // Model.
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "2"
 		"UnitLabel"                 "healing_ward"
@@ -1233,12 +1238,15 @@
 		}
 	}
 
-	"medium_creep_wave_3" // -- initial model is sandking, but the default vmdl file is not complete sandking files so use tidehunter
+	//====================================================================
+	// Sladar
+	//====================================================================
+	"medium_creep_wave_3"
 	{
 		// General
 		//
 		"BaseClass"                 "npc_dota_creature" // Class of entity of link to.
-		"Model"                     "models/heroes/tidehunter/tidehunter.vmdl"  // Model.
+		"Model"                     "models/heroes/slardar/slardar.vmdl"  // Model.
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "3"
 		"UnitLabel"                 "healing_ward"
@@ -1327,34 +1335,20 @@
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
 		"Creature"
-		{
-			"Wearable1"
-				{
-					"ItemDef"			"34"
-				}
-				"Wearable2"
-				{
-					"ItemDef"			"35"
-				}
-				"Wearable3"
-				{
-					"ItemDef"			"36"
-				}
-				"Wearable4"
-				{
-					"ItemDef"			"37"
-				}
-				
+		{				
 			"DisableClumpingBehavior"	"1"
 		}
 	}
-	
+
+	//====================================================================
+	// BristleBack
+	//====================================================================
 	"medium_creep_wave_4"
 	{
 		// General
 		//
 		"BaseClass"                 "npc_dota_creature" // Class of entity of link to.
-		"Model"                     "models/heroes/beastmaster/beastmaster_beast.vmdl"  // Model.
+		"Model"                     "models/heroes/bristleback/bristleback.vmdl"  // Model.
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "4"
 		"UnitLabel"                 "healing_ward"
@@ -1443,17 +1437,19 @@
 		//----------------------------------------------------------------------------------------------------------------------
 		"Creature"
 		{
-			
 			"DisableClumpingBehavior"	"1"
 		}
 	}
 
+	//====================================================================
+	// Beast master's boar
+	//====================================================================
 	"medium_creep_wave_5"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/items/beastmaster/hawk/fotw_eagle/fotw_eagle.vmdl"	// Model.
+		"Model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"5"
 		"UnitLabel"					"healing_ward"
@@ -1547,12 +1543,15 @@
 		}
 	}
 
+	//====================================================================
+	// Warlock Golem
+	//====================================================================
 	"medium_creep_wave_6"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"	// Model.
+		"Model"						"models/items/warlock/golem/ahmhedoq/ahmhedoq.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"6"
 		"UnitLabel"					"healing_ward"
@@ -1646,12 +1645,15 @@
 		}
 	}
 
+	//====================================================================
+	// Rikimaru - Satyr Brother
+	//====================================================================
 	"medium_creep_wave_7"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl"	// Model.
+		"Model"						"models/heroes/rikimaru/rikimaru.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"7"
 		"UnitLabel"					"healing_ward"
@@ -1745,12 +1747,15 @@
 		}
 	}
 
+	//====================================================================
+	// Visage - Familiar's Brother
+	//====================================================================
 	"medium_creep_wave_8"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/heroes/visage/visage_familiar.vmdl"	// Model.
+		"Model"						"models/heroes/visage/visage.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"8"
 		"UnitLabel"					"healing_ward"
@@ -1844,12 +1849,15 @@
 		}
 	}
 
+	//====================================================================
+	// Pudge - Undying minion's Brother
+	//====================================================================
 	"medium_creep_wave_9"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/heroes/undying/undying_minion.vmdl"	// Model.
+		"Model"						"models/heroes/pudge/pudge.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"9"
 		"UnitLabel"					"healing_ward"
@@ -1943,12 +1951,15 @@
 		}
 	}
 
+	//====================================================================
+	// Troll - Bounty Hunter's Brother
+	//====================================================================
 	"medium_creep_wave_10"
 	{
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/heroes/bounty_hunter/bounty_hunter.vmdl"	// Model.
+		"Model"						"models/heroes/troll_warlord/troll_warlord.vmdl"	// Model.
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"10"
 		"UnitLabel"					"healing_ward"
