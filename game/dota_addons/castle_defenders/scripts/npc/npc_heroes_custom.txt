@@ -72,6 +72,10 @@
 	{
 		"AbilityLayout"					"4"
 		"override_hero"					"npc_dota_hero_sniper"
+
+		"AttackDamageMin" 				"10"       // Damage range min.
+		"AttackDamageMax"				"20"       // Damage range max.
+
 		"Ability4"						"splinter_shot_custom"
 		"Ability5"						"attribute_bonus_castle"
 	}
