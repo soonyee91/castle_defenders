@@ -76,6 +76,7 @@
 		"AttackDamageMin" 				"10"       // Damage range min.
 		"AttackDamageMax"				"20"       // Damage range max.
 
+		"Ability3"						"gyrocopter_flak_cannon"
 		"Ability4"						"splinter_shot_custom"
 		"Ability5"						"attribute_bonus_castle"
 	}

@@ -203,6 +203,10 @@ eEnemyBase = nil
 fDifficultyTimer = 0
 -- Difficulty Interval
 fDifficultyInterval = 180
+-- Boss entity
+eBossEntity = nil
+-- Stop creeps spawn on boss fight
+bIsBossFight = false
 
 function UpdatePreGame()
 	iRadiantHeroCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
@@ -239,18 +243,17 @@ end
 function Update()
 	fGameTime = GameRules:GetGameTime() 
 
-	if fCreepSpawnTime < fGameTime then
+	if fCreepSpawnTime < fGameTime and bIsBossFight ~= true then
 		fCreepSpawnTime = fGameTime + fCreepSpawnInterval
 		SpawnCreeps(iWaveNumber)
 	end
 
-	if fBossSpawnTime < fGameTime then
-		fBossSpawnTime = fGameTime + fBossSpawnInterval
-		FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
+	if fBossSpawnTime < fGameTime and bIsBossFight ~= true then
+		bIsBossFight = true
 		SpawnBoss(iBossCounter)
 	end
 
-	if fDifficultyTimer < fGameTime then
+	if fDifficultyTimer < fGameTime and bIsBossFight ~= true then
 		fDifficultyTimer = fGameTime + fDifficultyInterval
 		iWaveNumber = iWaveNumber + 1
 		-- Prevent over number of creep wave
@@ -259,6 +262,14 @@ function Update()
 			iWaveNumber = 10
 			iEasyCreepCountPerSpawn = iEasyCreepCountPerSpawn + 5
 			iMediumCreepCountPerSpawn = iMediumCreepCountPerSpawn + 2
+		end
+	end
+
+	if eBossEntity ~= nil then
+		if bIsBossFight == true and eBossEntity:IsAlive() ~= true then
+			bIsBossFight = false
+			fBossSpawnTime = fGameTime + fBossSpawnInterval
+			FireGameEvent('cgm_timer_display', { timerMsg = "Next Boss in ", timerSeconds = fBossSpawnInterval, timerWarning = -1, timerEnd = false, timerPosition = 0})
 		end
 	end
 
@@ -315,7 +326,9 @@ function SpawnBoss(bossNumber)
 				ExecuteOrderFromTable({UnitIndex = unit:GetEntityIndex(),
 										OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
 										Position = waypoint,Queue= true})
-	iBossCounter = iBossCounter + 1
+	iBossCounter = iBossCounter
+
+	eBossEntity = unit
 end
 
 function UpdateCreepCountToSpawn()

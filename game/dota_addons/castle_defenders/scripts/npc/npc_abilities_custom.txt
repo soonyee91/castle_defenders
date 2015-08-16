@@ -645,11 +645,8 @@
 			"heal_modifier"
 			{
 				"IsHidden"			"0"
-				"OnCreated"
-				{
-					"StatusEffectName"	"particles/status_fx/status_effect_keeper_spirit_form.vpcf"
-					"StatusEffectPriority"	"10"
-				}
+				"StatusEffectName"		"particles/status_fx/status_effect_keeper_spirit_form.vpcf"
+				"StatusEffectPriority"	"10"
 				
 				"ThinkInterval"  "%heal_interval"
 				"OnIntervalThink"
@@ -681,9 +678,9 @@
 	{
 		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"           		"ability_datadriven"
-		"AbilityTextureName"      	"gyrocopter_flak_cannon"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"					"3"
+		"AbilityTextureName"      	"splinter_shot"
 
 		// Targeting
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -697,6 +694,12 @@
 		"AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 		"AbilityDamage"         	"400 600 800 1000"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
+			"soundfile"	"sounds/weapons/hero/gyrocopter/call_down_impact.vsnd"
+		}
 		
 		// Special  
 		//-------------------------------------------------------------------------------------------------------------
@@ -705,7 +708,7 @@
 			"01"
 			{
 				"var_type"        "FIELD_FLOAT"
-				"chance"        	"6"
+				"chance"        	"100"
 			}
 			
 			"02"
@@ -744,7 +747,7 @@
 			                {
 			                    "ModifierName" 		"splinter_shot_mod"
 			                    "Target"    		"CASTER"    
-			                }        
+			                }
 			            }
 			        }
 			    }
@@ -752,13 +755,26 @@
 
 			"splinter_shot_mod"
 			{
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"OnAttackLanded"
 			    {
 			        "RemoveModifier"
 			        {
 			            "ModifierName"  	"splinter_shot_mod"
 			            "Target"    		"CASTER"    
+			        }
+
+			        "FireSound"
+			        {
+			        	"EffectName"	"sounds/weapons/hero/gyrocopter/call_down_impact.vsnd"
+			        	"Target" 		"CASTER"
+			        }
+
+			        "FireEffect"
+			        {
+			        	"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
+			        	"EffectAttachType"  "follow_origin"
+			        	"Target"            "CASTER"
 			        }
 
 			        "Damage"
