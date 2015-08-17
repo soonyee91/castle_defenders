@@ -679,7 +679,7 @@
 		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"           		"ability_datadriven"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
-		"MaxLevel"					"3"
+		"MaxLevel"					"4"
 		"AbilityTextureName"      	"splinter_shot"
 
 		// Targeting
@@ -698,7 +698,7 @@
 		"precache"
 		{
 			"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
-			"soundfile"	"sounds/weapons/hero/gyrocopter/call_down_impact.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts" 
 		}
 		
 		// Special  
@@ -708,7 +708,7 @@
 			"01"
 			{
 				"var_type"        "FIELD_FLOAT"
-				"chance"        	"100"
+				"chance"        	"6"
 			}
 			
 			"02"
@@ -755,7 +755,7 @@
 
 			"splinter_shot_mod"
 			{
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 				"OnAttackLanded"
 			    {
 			        "RemoveModifier"
@@ -766,7 +766,7 @@
 
 			        "FireSound"
 			        {
-			        	"EffectName"	"sounds/weapons/hero/gyrocopter/call_down_impact.vsnd"
+			        	"EffectName"	"Hero_Gyrocopter.CallDown.Damage" 
 			        	"Target" 		"CASTER"
 			        }
 
@@ -775,6 +775,10 @@
 			        	"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
 			        	"EffectAttachType"  "follow_origin"
 			        	"Target"            "CASTER"
+			        	"ControlPoints"
+						{
+							"02"		"%radius 0 0"
+						}
 			        }
 
 			        "Damage"
