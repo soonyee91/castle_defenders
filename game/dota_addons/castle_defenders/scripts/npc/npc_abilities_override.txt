@@ -4,10 +4,8 @@
 {
 	"Version"   "1"
 
-	"chimera_liquid_fire"
+	"jakiro_liquid_fire"
 	{
-		"BaseClass"               "jakiro_liquid_fire"
-
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"20 14 8 3"
@@ -40,10 +38,8 @@
 		}	
 	}
 
-	"stomper_aftershock"
+	"earthshaker_aftershock"
 	{
-		"BaseClass"				"earthshaker_aftershock"
-
 		// Time		
 		"AbilityDuration"				"0.6 0.9 1.2 1.5"
 

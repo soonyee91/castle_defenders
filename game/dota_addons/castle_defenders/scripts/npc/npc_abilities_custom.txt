@@ -770,16 +770,17 @@
 			        	"Target" 		"CASTER"
 			        }
 
-			        "FireEffect"
-			        {
-			        	"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
-			        	"EffectAttachType"  "follow_origin"
-			        	"Target"            "CASTER"
-			        	"ControlPoints"
-						{
-							"02"		"%radius 0 0"
-						}
-			        }
+			        //"FireEffect"
+			        //{
+			        	//"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
+			        	//"EffectAttachType"  "start_at_customorigin"
+        				//"TargetPoint"      "TARGET" //This also works with world_origin
+			        	//"Target"            "CASTER"
+			        	//"ControlPoints"
+						//{
+							//"01"		"%radius 0 0"
+						//}
+			        //}
 
 			        "Damage"
 			        {

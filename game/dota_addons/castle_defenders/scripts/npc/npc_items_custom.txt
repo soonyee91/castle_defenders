@@ -7,7 +7,7 @@
 		"BaseClass"             					"item_datadriven"
 		"PingOverrideText"							"DOTA_Chat_blades_of_illusion"
 
-	    "AbilityTextureName"						"item_rapier"
+	    "AbilityTextureName"						"item_blades_of_illusion"
 	    "Model"        								"models/props_gameplay/recipe.vmdl" 
 
 		// General Stuffs
@@ -156,7 +156,7 @@
 		"ID"										"1610"
 		"BaseClass"             					"item_datadriven"
 		
-	    "AbilityTextureName"						"item_rapier"
+	    "AbilityTextureName"						"item_cape_of_fire"
 	    "Model"        								"models/props_gameplay/recipe.vmdl" 
 
 		// General Stuffs
@@ -316,7 +316,7 @@
 		"ID"										"1615"
 		"BaseClass"             					"item_datadriven"
 		
-	    "AbilityTextureName"						"item_rapier"
+	    "AbilityTextureName"						"item_hammer_of_thunder"
 	    "Model"        								"models/props_gameplay/recipe.vmdl" 
 
 		// General Stuffs
