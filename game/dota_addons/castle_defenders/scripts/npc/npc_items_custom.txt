@@ -451,6 +451,74 @@
 		}
 	}
 
+	// Double Rapier
+	"item_double_rapier"
+	{
+		"ID"										"1620"
+		"BaseClass"             					"item_datadriven"
+		
+	    "AbilityTextureName"						"item_hammer_of_thunder"
+	    "Model"        								"models/props_gameplay/recipe.vmdl" 
+
+		// General Stuffs
+		"ItemCost" 									"0"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+
+		"ItemShareability"							"ITEM_FULLY_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"660"
+			}
+		}
+
+		"precache"
+		{
+		}
+
+		"Modifiers"
+		{
+			"hot_item_stats"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+			    {
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+			    }
+			}
+		}
+	}
+
+	"item_recipe_double_rapier"
+	{
+		"ID"										"1621"
+		"BaseClass"             					"item_datadriven"
+
+		// General Stuffs
+		"ItemCost" 									"0"
+		"ItemKillable" 								"0"
+		"ItemSellable" 								"1"
+		"ItemPurchasable" 							"1"
+		"ItemDroppable"								"1"
+
+		// Recipe
+		"ItemRecipe"								"1"
+		"ItemResult"								"item_double_rapier"
+		"ItemRequirements"
+		{
+			// Cant have spaces between ; and next item
+			"01" "item_rapier;item_rapier"
+		}
+	}
+
 	//Shield
 	"item_example_item"
 	{
