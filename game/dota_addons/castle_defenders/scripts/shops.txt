@@ -159,7 +159,6 @@
   {
     "item"    "item_blades_of_illusion"
     "item"    "item_cape_of_fire"
-    "item"    "item_hammer_of_thunder"
 
     "item"    "item_lesser_crit"  
     "item"    "item_armlet"
@@ -173,12 +172,14 @@
     "item"    "item_greater_crit"
     "item"    "item_butterfly"
     "item"    "item_rapier"
+    "item"    "item_double_rapier"
     "item"    "item_abyssal_blade"
   }
     
   // Level 4 - Orange / Orb / Artifacts       
   "artifacts"
   { 
+    "item"    "item_hammer_of_thunder"
     "item"    "item_helm_of_the_dominator"
     "item"    "item_mask_of_madness"
     "item"    "item_sange"

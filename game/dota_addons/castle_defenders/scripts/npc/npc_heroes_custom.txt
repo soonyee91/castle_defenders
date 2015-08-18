@@ -97,4 +97,14 @@
 		"override_hero"					"npc_dota_hero_earthshaker"		
 		"Ability5"						"attribute_bonus_castle"
 	}
+
+	//=============================
+	// Death Prophet
+	//=============================
+	"Deathly_Hollow"
+	{
+		"AbilityLayout"					"4"
+		"override_hero"					"npc_dota_hero_death_prophet"		
+		"Ability5"						"attribute_bonus_castle"
+	}
 }
