@@ -457,7 +457,7 @@
 		"ID"										"1620"
 		"BaseClass"             					"item_datadriven"
 		
-	    "AbilityTextureName"						"item_hammer_of_thunder"
+	    "AbilityTextureName"						"item_double_rapier"
 	    "Model"        								"models/props_gameplay/recipe.vmdl" 
 
 		// General Stuffs
@@ -477,11 +477,7 @@
 				"bonus_damage"		"660"
 			}
 		}
-
-		"precache"
-		{
-		}
-
+		
 		"Modifiers"
 		{
 			"hot_item_stats"

@@ -754,7 +754,7 @@
 
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGE_ATTACK"			// Type of attack - melee, ranged, etc.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// Type of attack - melee, ranged, etc.
 		"AttackDamageMin"			"70"			// Damage range min.
 		"AttackDamageMax"			"80"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
@@ -1707,7 +1707,7 @@
 
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGE_ATTACK"			// Type of attack - melee, ranged, etc.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// Type of attack - melee, ranged, etc.
 		"AttackDamageMin"			"700"			// Damage range min.
 		"AttackDamageMax"			"800"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
@@ -2182,7 +2182,7 @@
 		
 		"Creature"
 		{
-		//AttachWearables
+			//AttachWearables
 			//----------------------------------------------------------------
 			"AttachWearables"
 			{
@@ -2214,7 +2214,6 @@
 				{
 					"ItemDef"			"4792"
 				}
-			}
 			}
 		}
 	}

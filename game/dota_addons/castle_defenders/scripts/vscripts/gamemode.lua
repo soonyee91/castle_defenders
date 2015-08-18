@@ -83,7 +83,7 @@ function GameMode:OnHeroInGame(hero)
 	print ("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
 	-- This line for example will set the starting gold of every hero to 500 unreliable gold
-	hero:SetGold(9999999, false)
+	hero:SetGold(825, false)
 
 	-- These lines will create an item and add it to the player, effectively ensuring they start with the item
 	--local item = CreateItem("item_example_item", hero, hero)
@@ -161,23 +161,23 @@ vBossSpawnPos = 0
 tEasyCreepSpawnValue = {
 	[1] = 5,
 	[2] = 5,
-	[3] = 6,
-	[4] = 7,
-	[5] = 7,
-	[6] = 9,
-	[7] = 9,
-	[8] = 10
+	[3] = 5,
+	[4] = 5,
+	[5] = 6,
+	[6] = 6,
+	[7] = 6,
+	[8] = 7,
 }
 -- Table for Medium creep : hero
 tMediumCreepSpawnValue = {
 	[1] = 1,
 	[2] = 1,
 	[3] = 1,
-	[4] = 2,
-	[5] = 3,
-	[6] = 4,
-	[7] = 4,
-	[8] = 4
+	[4] = 1,
+	[5] = 2,
+	[6] = 3,
+	[7] = 3,
+	[8] = 3
 }
 -- Creep Count
 iEasyCreepCountPerSpawn = 0
