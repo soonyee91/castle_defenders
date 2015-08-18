@@ -121,8 +121,8 @@
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"                "1"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
-		"AttackRange"               "500"       // Range within a target can be attacked.
+		"AttackAcquisitionRange"    "500"       // Range within a target can be acquired.
+		"AttackRange"               "120"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
 
@@ -149,7 +149,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "350"       // Speed
+		"MovementSpeed"             "280"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -249,8 +249,8 @@
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"                "1"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
-		"AttackRange"               "500"       // Range within a target can be attacked.
+		"AttackAcquisitionRange"    "500"       // Range within a target can be acquired.
+		"AttackRange"               "120"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
 
@@ -277,7 +277,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "390"       // Speed
+		"MovementSpeed"             "280"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -364,8 +364,8 @@
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"                "1"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
-		"AttackRange"               "500"       // Range within a target can be attacked.
+		"AttackAcquisitionRange"    "500"       // Range within a target can be acquired.
+		"AttackRange"               "120"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
 
@@ -392,7 +392,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "450"       // Speed
+		"MovementSpeed"             "280"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -461,12 +461,12 @@
 		"AttackDamageMin"			"20"			// Damage range min.
 		"AttackDamageMax"			"20"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1"			// Speed of attack.
-		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		"AttackRate"				"1.6"			// Speed of attack.
+		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
 		"AttackRange"				"500"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
-		"ProjectileSpeed"			"900"		// Speed of projectile.
+		"ProjectileSpeed"			"1500"		// Speed of projectile.
 
 		// Attributes
 		//----------------------------------------------------------------
@@ -491,7 +491,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"300"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -560,10 +560,10 @@
 		"AttackDamageMin"			"10"			// Damage range min.
 		"AttackDamageMax"			"100"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1"			// Speed of attack.
-		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackRate"				"1.5"			// Speed of attack.
+		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"120"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -590,7 +590,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"290"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -661,8 +661,8 @@
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"1.5"			// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"120"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -689,7 +689,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"290"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -759,7 +759,7 @@
 		"AttackDamageMax"			"80"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"1.2"			// Speed of attack.
-		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
 		"AttackRange"				"500"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
@@ -788,7 +788,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"295"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -857,10 +857,10 @@
 		"AttackDamageMin"			"70"			// Damage range min.
 		"AttackDamageMax"			"80"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1"			// Speed of attack.
+		"AttackRate"				"1.0"			// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"120"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -887,7 +887,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"245"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -956,10 +956,10 @@
 		"AttackDamageMin"			"90"			// Damage range min.
 		"AttackDamageMax"			"90"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1"			// Speed of attack.
-		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackRate"				"0.9"			// Speed of attack.
+		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"125"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -986,7 +986,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"300"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -1143,9 +1143,9 @@
 		"AttackDamageMin"           "100"         // Damage range min.
 		"AttackDamageMax"           "120"         // Damage range max.
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"                "1"         // Speed of attack.
+		"AttackRate"                "1.2"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
+		"AttackAcquisitionRange"    "600"       // Range within a target can be acquired.
 		"AttackRange"               "128"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
@@ -1173,7 +1173,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "350"       // Speed
+		"MovementSpeed"             "300"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -1264,7 +1264,7 @@
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"                "2"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
+		"AttackAcquisitionRange"    "650"       // Range within a target can be acquired.
 		"AttackRange"               "128"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
@@ -1353,7 +1353,7 @@
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"                "4"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
+		"AttackAcquisitionRange"    "650"       // Range within a target can be acquired.
 		"AttackRange"               "128"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
@@ -1381,7 +1381,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "380"       // Speed
+		"MovementSpeed"             "325"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -1418,6 +1418,7 @@
 
 	//====================================================================
 	// Beast master's boar
+	//
 	//====================================================================
 	"medium_creep_wave_5"
 	{
@@ -1440,7 +1441,7 @@
 		"AttackDamageMin"			"250"			// Damage range min.
 		"AttackDamageMax"			"300"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"1"			// Speed of attack.
+		"AttackRate"				"0.9"			// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
 		"AttackRange"				"500"		// Range within a target can be attacked.
@@ -1470,7 +1471,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"335"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -1531,7 +1532,7 @@
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"0.5"			// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"680"		// Range within a target can be acquired.
 		"AttackRange"				"128"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
@@ -1559,7 +1560,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"400"		// Speed
+		"MovementSpeed"				"385"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -1649,7 +1650,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"400"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -1697,6 +1698,7 @@
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"1"
 		"UnitLabel"					"healing_ward"
+		"ModelScale"          	    "1.1"
 
 		// Armor
 		//----------------------------------------------------------------
@@ -1787,6 +1789,7 @@
 		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
 		"Level"						"9"
 		"UnitLabel"					"healing_ward"
+		"ModelScale"          	    "1.1"
 		
 		// Armor
 		//----------------------------------------------------------------
@@ -1800,9 +1803,9 @@
 		"AttackDamageMax"			"2500"			// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"0.5"			// Speed of attack.
-		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"120"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -1829,7 +1832,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-		"MovementSpeed"				"450"		// Speed
+		"MovementSpeed"				"385"		// Speed
 		"MovementTurnRate"			"1.0"		// Turning rate.
 		"FollowRange"				"250"		// Distance to keep when following
 
@@ -1890,8 +1893,8 @@
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"8"			// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"500"		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackRange"				"120"		// Range within a target can be attacked.
 		"ProjectileModel"			"" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.
 
@@ -2091,7 +2094,7 @@
 		// General
 		//
 		"BaseClass"                 "npc_dota_creature" // Class of entity of link to.
-		"Model"                     "models/heroes/terrorblade/terrorblade.vmdl"  // Model.
+		"Model"                     "models/heroes/kunkka/kunkka.vmdl"  // Model.
 		"SoundSet"                  "Creep_Good_Range"                  // Name of sound set.
 		"Level"                     "30"
 		"UnitLabel"                 "healing_ward"
@@ -2120,9 +2123,9 @@
 		"AttackDamageMin"           "500"         // Damage range min.
 		"AttackDamageMax"           "800"         // Damage range max.
 		"AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"                "1.5"         // Speed of attack.
+		"AttackRate"                "1.2"         // Speed of attack.
 		"AttackAnimationPoint"      "0.5"       // Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"    "800"       // Range within a target can be acquired.
+		"AttackAcquisitionRange"    "680"       // Range within a target can be acquired.
 		"AttackRange"               "128"       // Range within a target can be attacked.
 		"ProjectileModel"           "" // Particle system model for projectile.
 		"ProjectileSpeed"           "900"       // Speed of projectile.
@@ -2150,7 +2153,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"         // Type of locomotion - ground, air
-		"MovementSpeed"             "450"       // Speed
+		"MovementSpeed"             "400"       // Speed
 		"MovementTurnRate"          "1.0"       // Turning rate.
 		"FollowRange"               "250"       // Distance to keep when following
 
@@ -2179,6 +2182,40 @@
 		
 		"Creature"
 		{
+		//AttachWearables
+			//----------------------------------------------------------------
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"4790"
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"4768"
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"4767"
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"4766"
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"4617"
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"4791"
+				}
+				"Wearable7"
+				{
+					"ItemDef"			"4792"
+				}
+			}
+			}
 		}
 	}
 
