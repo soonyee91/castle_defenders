@@ -800,6 +800,113 @@
 	}
 
 	//=====================================================================
+	// FOUNTAIN HEAL
+	//=====================================================================
+	"fountain_healing_custom"
+	{
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AURA"
+		"BaseClass"           		"ability_datadriven"
+		"AbilityType"				"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"					"1"
+		"AbilityTextureName"      	"splinter_shot"
+
+		// Targeting
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+
+		"precache"
+		{
+		}
+		
+		// Special  
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"heal_per_tick"		"2"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"heal_interval"		"1"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"heal_radius"		"750"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"mana_per_tick"		"-2"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"ancient_fountain_heal_mod"
+			{
+				"Passive"				"1" //Apply as soon as the spell is learned
+				"IsHidden"				"1" //Don't show the aura applier
+
+				"Aura"					"ancient_healing_effect"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_ApplyToCaster"	"0"   // Not Apply to Self, default is 1
+			}
+
+			"ancient_healing_effect"
+			{
+				"Heal"
+				{
+					"HealAmount"	"%heal"
+				}
+				"SpendMana"
+				{
+					"Mana"		"%mana_per_tick"
+				}
+			}
+
+//			"ancient_fountain_heal_mod"
+//			{
+//				"Passive"			"1"
+//				"IsHidden"			"0"
+//				"IsBuff"			"1"
+//				"AttachEffect"
+//				{
+//					"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_radiance_streak_glow.vpcf"
+//					"EffectAttachType"  "follow_origin"
+//					
+//					"Target"
+//					{
+//						"Center"	"CASTER"
+//						"Radius"	"%radius"
+//						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+//						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+//					}
+//				}
+//				"ThinkInterval" 		 "%heal_interval"
+//				"OnIntervalThink"
+//				{
+//					"Heal"
+//					{
+//						"Target"
+//						{
+//							"Center"	"CASTER"
+//							"Radius"	"%heal_radius"
+//							"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+//							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+//						}
+//						"HealAmount"	"%heal"
+//					}
+//				}
+//			}
+		}
+	}
+
+	//=====================================================================
 	// Attribute Bonus
 	//=====================================================================
 

@@ -192,7 +192,7 @@ fBossSpawnTime = 0
 -- Current Game Time
 fGameTime = 0
 -- Creep Spawn Interval
-fCreepSpawnInterval = 10
+fCreepSpawnInterval = 20
 -- Boss Spawn Interval
 fBossSpawnInterval = 180
 -- Ally Base
