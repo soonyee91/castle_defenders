@@ -159,7 +159,7 @@
 	//"item_ring_of_regen"      "REMOVE"
 	//"item_sobi_mask"      "REMOVE"
 	//"item_boots"      "REMOVE"
-	//"item_gem"      "REMOVE"
+	"item_gem"      "REMOVE"
 	//"item_cloak"      "REMOVE"
 	//"item_talisman_of_evasion"      "REMOVE"
 	//"item_cheese"     "REMOVE"
@@ -343,7 +343,6 @@
 	//"item_recipe_tranquil_boots"      "REMOVE"
 	//"item_tranquil_boots"     "REMOVE"
 	//"item_shadow_amulet"      "REMOVE"
-
 
 	//"item_halloween_candy_corn"     "REMOVE"
 	//"item_mystery_hook"     "REMOVE"

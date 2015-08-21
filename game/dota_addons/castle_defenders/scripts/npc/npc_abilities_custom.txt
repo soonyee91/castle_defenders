@@ -814,17 +814,13 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 
-		"precache"
-		{
-		}
-		
 		// Special  
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"heal_per_tick"		"2"
+				"heal_per_tick"		"30"
 			}
 			"02"
 			{
@@ -834,12 +830,12 @@
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"heal_radius"		"750"
+				"heal_radius"		"1500"
 			}
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"mana_per_tick"		"-2"
+				"mana_per_tick"		"30"
 			}
 		}
 		
@@ -851,7 +847,7 @@
 				"IsHidden"				"1" //Don't show the aura applier
 
 				"Aura"					"ancient_healing_effect"
-				"Aura_Radius"			"%radius"
+				"Aura_Radius"			"%heal_radius"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				"Aura_ApplyToCaster"	"0"   // Not Apply to Self, default is 1
@@ -859,13 +855,23 @@
 
 			"ancient_healing_effect"
 			{
-				"Heal"
+				"Properties"
 				{
-					"HealAmount"	"%heal"
+				    "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%heal_per_tick"
+				    "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "%mana_per_tick" 
 				}
-				"SpendMana"
-				{
-					"Mana"		"%mana_per_tick"
+			}
+
+			"invulnerable_mod"
+			{
+				"Passive"				"1" //Apply as soon as the spell is learned
+				"IsHidden"				"1" //Don't show the aura applier
+				"States"
+				{ 
+				    "MODIFIER_STATE_INVULNERABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+				    "MODIFIER_STATE_NO_HEALTH_BAR"			"MODIFIER_STATE_VALUE_ENABLED"
+				    "MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
+				    "MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 

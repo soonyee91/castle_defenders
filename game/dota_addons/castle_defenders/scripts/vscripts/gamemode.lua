@@ -222,6 +222,8 @@ function UpdatePreGame()
 	-- Cache both bases
 	eAllyBase = Entities:FindByName(nil, "ally_base")
 	eAllyBase:SetTeam(DOTA_TEAM_GOODGUYS)
+	local dummy = CreateUnitByName("npc_dummy_unit", eAllyBase:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_GOODGUYS)
+	dummy:GetAbilityByIndex(0):SetLevel(1)
 	eEnemyBase = Entities:FindByName(nil, "enemy_base")
 
 	fGameTime = GameRules:GetGameTime()

@@ -208,7 +208,7 @@
 
 		"precache"
 		{
-			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_radiance_streak_glow.vpcf"
+			"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 		}
 
 		"Modifiers"
@@ -219,11 +219,11 @@
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
-			    {
+				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%damage_bonus"
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%hpregen_bonus"
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
-			    }
+				}
 			}
 
 			"cof_lifesteal_modifier"
@@ -241,7 +241,7 @@
 				{
 					"Lifesteal"
 					{
-						"Target"            "ATTACKER"
+						"Target"			"ATTACKER"
 						"LifestealPercent"	"%lifesteal"
 					}
 				}
@@ -253,21 +253,10 @@
 				"IsHidden"			"0"
 				"IsBuff"			"1"
 
-				"AttachEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_radiance_streak_glow.vpcf"
-					"EffectAttachType"  "follow_origin"
-					
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
+				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+				"EffectAttachType"	"follow_origin"
 
-				"ThinkInterval"  "1.0"
+				"ThinkInterval"		"1.0"
 				"OnIntervalThink"
 				{
 					"Damage"
@@ -355,7 +344,8 @@
 
 		"precache"
 		{
-			"particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+			"particle"	"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts" 
 		}
 
 		"Modifiers"
@@ -413,9 +403,15 @@
 
 			        "FireEffect"
 			        {
-			        	"EffectName" 			"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+			        	"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
 			            "EffectAttachType"  	"follow_origin"
 			            "Target"    			"TARGET"
+			        }
+
+			        "FireSound"
+			        {
+			        	"EffectName"			"Hero_Zuus.LightningBolt"
+			        	"Target"				"CASTER"
 			        }
 
 			        "Damage"
@@ -457,8 +453,8 @@
 		"ID"										"1620"
 		"BaseClass"             					"item_datadriven"
 		
-	    "AbilityTextureName"						"item_double_rapier"
-	    "Model"        								"models/props_gameplay/recipe.vmdl" 
+		"AbilityTextureName"						"item_double_rapier"
+		"Model"        								"models/props_gameplay/recipe.vmdl"
 
 		// General Stuffs
 		"ItemCost" 									"0"
@@ -468,6 +464,11 @@
 		"ItemDroppable"								"1"
 
 		"ItemShareability"							"ITEM_FULLY_SHAREABLE"
+
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
+		}
 
 		"AbilitySpecial"
 		{
@@ -485,10 +486,14 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"EffectName"		"particles/econ/courier/courier_golden_roshan/golden_roshan_ambient.vpcf"
+				"EffectAttachType"	"follow_origin"
+
 				"Properties"
-			    {
+				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-			    }
+				}
 			}
 		}
 	}
