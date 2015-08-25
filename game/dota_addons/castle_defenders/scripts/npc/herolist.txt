@@ -11,6 +11,9 @@
   "npc_dota_hero_jakiro"  "1"
   "npc_dota_hero_earthshaker" "1"
   "npc_dota_hero_death_prophet" "1"
+  "npc_dota_hero_juggernaut" "1"
+  "npc_dota_hero_nevermore" "1"
+  "npc_dota_hero_necrolyte" "1"
 
   //"npc_dota_hero_ancient_apparition" "1"
   //"npc_dota_hero_antimage" "1"

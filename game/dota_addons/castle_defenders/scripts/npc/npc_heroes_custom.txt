@@ -107,4 +107,35 @@
 		"override_hero"					"npc_dota_hero_death_prophet"		
 		"Ability5"						"attribute_bonus_castle"
 	}
+
+	//============================
+	// JuggerNaught
+	//============================
+	"Blade_Warrior"
+	{
+		"AbilityLayout"					"4"
+		"override_hero"					"npc_dota_hero_juggernaut"
+		"Ability2"						"skeleton_king_vampiric_aura"	
+		"Ability5"						"attribute_bonus_castle"
+	}
+
+	//============================
+	// Shadow Fiend
+	//============================
+	"Soul_Keeper"
+	{
+		"AbilityLayout"					"6"
+		"override_hero"					"npc_dota_hero_nevermore"
+		"Ability7"						"attribute_bonus_castle"
+	}
+
+	//============================
+	// Shadow Fiend
+	//============================
+	"Green_Reaper"
+	{
+		"AbilityLayout"					"4"
+		"override_hero"					"npc_dota_hero_necrolyte"
+		"Ability5"						"attribute_bonus_castle"
+	}
 }
